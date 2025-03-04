@@ -75,6 +75,12 @@
             z-index: 1; /* Ensures it stays above the blurred background */
         }
 
+        .container p {
+	    font-size: 13.5px;
+            text-align: center;
+            margin: 10px auto 10px auto;
+	    }
+
         input[type="text"], select, input[type="file"] {
             width: 100%;
             padding: 10px;
@@ -173,6 +179,8 @@
     <div id="upload-form" class="container">
         <h2>Upload Files</h2>
         <input type="file" id="fileInput" multiple required><br><br>
+        <p>Klik SEKALI SAHAJA.</p>
+	    <p>Tunggu sehingga keluar mesej SUCCESSFULL.</p>
         <button onclick="uploadFile()">Upload</button>
     </div>
 
