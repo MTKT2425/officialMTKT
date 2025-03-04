@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEMAKAN KEPUTUSAN PENGAMBILAN AHLI MTKT EDISI KE-2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Add a blurred background image */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('1.jpg'); /* Replace 'your-image.jpg' with the path to your image */
+            background-size: cover;
+            background-position: bottom;
+            filter: blur(8px);
+            z-index: -1; /* Ensure it's behind other content */
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 700px;
+            position: relative; /* To ensure proper stacking */
+            z-index: 1; /* Place above the background */
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 50%;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .message {
+            margin-top: 20px;
+            font-weight: bold;
+            display: none;
+        }
+
+        .loading {
+            margin-top: 20px;
+            color: #555;
+            display: none;
+        }
+
+        .banner {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .banner.berjaya {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .banner.failure {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .banner.not-found {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        @media (max-width: 768px) {
+        .container h1 {
+            font-size: 1.4em;
+         }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SEMAKAN KEPUTUSAN PENGAMBILAN AHLI MTKT EDISI KE-2</h1>
+        <p>Pastikan anda memasukkan NO. MATRIK yang sah dan betul</p>
+        <input type="text" id="uniqueId" placeholder="Masukkan NO. MATRIK anda">
+        <button onclick="checkResult()">Semak Keputusan</button>
+        <p class="loading" id="loading">Checking...please wait...</p>
+        <div class="banner" id="banner"></div>
+    </div>
+
+    <script>
+        const results = {
+            "2230670": "Maaf. Permohonan anda tidak berjaya",
+	        "2240098": "Maaf. Permohonan anda tidak berjaya",
+	        "2240877": "Maaf. Permohonan anda tidak berjaya",
+	        "2230855": "Maaf. Permohonan anda tidak berjaya",
+	        "2241070": "Maaf. Permohonan anda tidak berjaya",
+	        "2240479": "Maaf. Permohonan anda tidak berjaya",
+	        "2240852": "Maaf. Permohonan anda tidak berjaya",
+	        "2240755": "Maaf. Permohonan anda tidak berjaya",
+	        "2240097": "Maaf. Permohonan anda tidak berjaya",
+	        "2230631": "Maaf. Permohonan anda tidak berjaya",
+	        "2241002": "Maaf. Permohonan anda tidak berjaya",
+
+            "2230491": "Tahniah! Anda terpilih menjadi ahli baharu MTKT Sesi 2024/2025",
+	        "2230838": "Tahniah! Anda terpilih menjadi ahli baharu MTKT Sesi 2024/2025",
+	        "2230299": "Tahniah! Anda terpilih menjadi ahli baharu MTKT Sesi 2024/2025",
+	        "2240255": "Tahniah! Anda terpilih menjadi ahli baharu MTKT Sesi 2024/2025",
+	        "2240378": "Tahniah! Anda terpilih menjadi ahli baharu MTKT Sesi 2024/2025",
+	        "2240216": "Tahniah! Anda terpilih menjadi ahli baharu MTKT Sesi 2024/2025",
+	        "2240684": "Tahniah! Anda terpilih menjadi ahli baharu MTKT Sesi 2024/2025",
+	        "2240145": "Tahniah! Anda terpilih menjadi ahli baharu MTKT Sesi 2024/2025",
+	        "2240740": "Tahniah! Anda terpilih menjadi ahli baharu MTKT Sesi 2024/2025",
+	        "2240419": "Tahniah! Anda terpilih menjadi ahli baharu MTKT Sesi 2024/2025",
+	        "2241018": "Tahniah! Anda terpilih menjadi ahli baharu MTKT Sesi 2024/2025",
+        };
+
+        function checkResult() {
+            const uniqueId = document.getElementById("uniqueId").value.trim();
+            const loadingElement = document.getElementById("loading");
+            const bannerElement = document.getElementById("banner");
+
+            // Show loading message
+            loadingElement.style.display = "block";
+            bannerElement.style.display = "none";
+
+            // Simulate a delay for checking
+            setTimeout(() => {
+                loadingElement.style.display = "none"; // Hide loading message
+
+                if (results[uniqueId]) {
+                    bannerElement.textContent = `Keputusan: ${results[uniqueId]}.`;
+                    bannerElement.className = `banner ${results[uniqueId] === "Tahniah! Anda terpilih menjadi ahli baharu MTKT Sesi 2024/2025" ? "berjaya" : "failure"}`;
+                } else {
+                    bannerElement.textContent = "Tiada rekod permohonan. Cuba semula.";
+                    bannerElement.className = "banner not-found";
+                }
+                bannerElement.style.display = "block"; // Show the banner
+            }, 2000); // Simulate 2 seconds delay
+        }
+    </script>
+</body>
+</html>
