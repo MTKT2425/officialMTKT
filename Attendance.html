@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTKT UPNM</title>
+    <link rel="shortcut icon" href="assets/LOGO.png" type="image/x-icon">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4cc9f0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .header {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+        
+        .form-container {
+            padding: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus {
+            border-color: var(--accent);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+        
+        .form-group input::placeholder {
+            color: #adb5bd;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 15px;
+            width: 100%;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .submit-btn:hover {
+            background: linear-gradient(to right, var(--secondary), var(--primary));
+            transform: translateY(-2px);
+        }
+        
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+        
+        .animation {
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--accent), var(--success));
+            width: 0;
+            transition: width 0.5s;
+        }
+        
+        .container:hover .animation {
+            width: 100%;
+        }
+        
+        .attendance-list {
+            margin-top: 30px;
+            max-height: 300px;
+            overflow-y: auto;
+            border-radius: 10px;
+            border: 1px solid #e9ecef;
+        }
+        
+        .attendance-list h3 {
+            padding: 15px;
+            background: #f8f9fa;
+            position: sticky;
+            top: 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .student-item {
+            padding: 15px;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s;
+        }
+        
+        .student-item:last-child {
+            border-bottom: none;
+        }
+        
+        .student-item:hover {
+            background: #f8f9fa;
+        }
+        
+        .timestamp {
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                border-radius: 10px;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="animation"></div>
+        <div class="header">
+            <h1>Sistem Kehadiran MTKT</h1>
+            <p>Sila masukkan No Matrik anda</p>
+        </div>
+        
+        <div class="form-container">
+            <form id="attendanceForm">
+                <div class="form-group">
+                    <label for="studentId">No Matrik</label>
+                    <input type="text" id="studentId" placeholder="Sila masukkan No Matrik" required>
+                </div>
+                <button type="submit" class="submit-btn">Hantar Kehadiran</button>
+            </form>
+            
+            <div class="attendance-list">
+                <h3>Kehadiran Terkini</h3>
+                <div id="studentList">
+                    <!-- Student items will be added here dynamically -->
+                    <div class="student-item">
+                        <!--<span>SAMPLE-001</span>-->
+                        <!--<span class="timestamp">Just now</span>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+const scriptURL = 'https://script.google.com/macros/s/AKfycbwPQ_FZ4gsmorKkJT0Yhqh5AAMBIuPdITRi0eQnrQ5S6Nxpp39Ho7NIGUnowczBSZ4G/exec';
+const form = document.getElementById('attendanceForm');
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+
+  const studentIdInput = document.getElementById('studentId');
+  const studentId = studentIdInput.value.trim();
+  if (!studentId) return;
+
+  const submitBtn = document.querySelector('.submit-btn');
+  submitBtn.textContent = 'Submitting...';
+  submitBtn.disabled = true;
+
+  fetch(scriptURL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams({ studentId })
+  })
+  .then(response => response.text())
+  .then(responseText => {
+    // Add to the attendance list
+    const now = new Date();
+    const timeString = now.toLocaleTimeString();
+
+    const studentItem = document.createElement('div');
+    studentItem.className = 'student-item';
+    studentItem.innerHTML = `
+      <span>${studentId}</span>
+      <span class="timestamp">${timeString}</span>
+    `;
+
+    const studentList = document.getElementById('studentList');
+    studentList.insertBefore(studentItem, studentList.firstChild);
+
+    // Clear input and update button
+    studentIdInput.value = '';
+    submitBtn.textContent = 'Attendance Recorded!';
+    submitBtn.style.background = 'linear-gradient(to right, #4cc9f0, #4895ef)';
+
+    setTimeout(() => {
+      submitBtn.textContent = 'Submit Attendance';
+      submitBtn.style.background = 'linear-gradient(to right, var(--primary), var(--secondary))';
+      submitBtn.disabled = false;
+    }, 2000);
+  })
+  .catch(error => {
+    alert('Error! Unable to submit attendance.');
+    console.error('Error!', error.message);
+    submitBtn.textContent = 'Try Again';
+    submitBtn.disabled = false;
+  });
+});
+</script>
+
+</body>
+</html>
