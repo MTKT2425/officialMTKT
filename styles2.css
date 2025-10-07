@@ -49,7 +49,9 @@
   margin-bottom: 20px;
 }
 
-
+.section__description p {
+  text-align: justify;
+}
 
 .btn {
   padding: 1rem 2rem;
