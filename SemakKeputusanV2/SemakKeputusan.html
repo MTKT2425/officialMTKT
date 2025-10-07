@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEMAKAN KEPUTUSAN PENGAMBILAN MTKT</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>SEMAKAN KEPUTUSAN PENGAMBILAN</h1>
+            <p>Keahlian MTKT 2025/2026</p>
+        </div>
+        
+        <div class="content">
+            <div class="search-box">
+                <input type="text" id="studentId" placeholder="Masukkan Nombor Matrik anda" required>
+                <button id="checkBtn">Semak</button>
+            </div>
+            
+            <div id="successResult" class="result-container">
+                <div class="success-result">
+                    <div class="success-header">
+                        <div class="success-icon">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="success-title">
+                            <h2>Tahniah!</h2>
+                            <p>Permohonan anda diterima dan dilantik menjadi ahli MTKT.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="details-grid">
+                        <div class="detail-item">
+                            <h3>Nama Penuh</h3>
+                            <p id="resultName">John Doe</p>
+                        </div>
+                        <div class="detail-item">
+                            <h3>Nombor Matrik</h3>
+                            <p id="resultId">STD2023001</p>
+                        </div>
+                        <div class="detail-item">
+                            <h3>Fakulti</h3>
+                            <p id="resultFaculty">Computer Science</p>
+                        </div>
+                        <div class="detail-item">
+                            <h3>Nombor Telefon</h3>
+                            <p id="resultPhone">Engineering</p>
+                        </div>
+                        <div class="detail-item">
+                            <h3>Tahun Pengajian</h3>
+                            <p id="resultYear">Undergraduate</p>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="download-btn" id="downloadBtn">
+                        <i class="fas fa-download"></i> Cetak Slip Tawaran
+                    </a>
+                </div>
+            </div>
+            
+            <div id="failMessage" class="fail-message">
+                <div class="fail-icon">
+                    <i class="fas fa-times"></i>
+                </div>
+                <h2>Permohonan TIDAK BERJAYA!</h2>
+                <p></p>
+                <button class="try-again" id="tryAgainBtn">Cuba lagi</button>
+            </div>
+        </div>
+        
+        <footer>
+            <p>©2024 Majlis Tertinggi Kolej Tuah. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Add jsPDF library for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
