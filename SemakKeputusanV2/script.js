@@ -256,7 +256,7 @@ document.addEventListener('DOMContentLoaded', function() {
             phone: "0136077169",
             year: "Tahun 1",
             room: "502",
-            exco: "PRESIDEN",
+            exco: "TIMBALAN PRESIDEN",
             careTaker: "Muhammad Taufiq bin Rosdan",
             dateStart: "13 Oktober 2025"
         }
