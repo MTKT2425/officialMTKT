@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
             phone: "01126729804",
             year: "Tahun 1",
             room: "430",
-            exco: "AKAN DIMAKLUMKAN KELAK",
+            exco: "EXCO PEMBANGUNAN INSAN & KESUKARELAWANAN",
             careTaker: "Muhammad Taufiq bin Rosdan",
             dateStart: "13 Oktober 2025"
         },
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
             phone: "01131991069",
             year: "Tahun 1",
             room: "427",
-            exco: "AKAN DIMAKLUMKAN KELAK",
+            exco: "EXCO KEBAJIKAN & KEROHANIAN",
             careTaker: "Muhammad Taufiq bin Rosdan",
             dateStart: "13 Oktober 2025"
         },
@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
             phone: "0166073015",
             year: "Tahun 1",
             room: "512",
-            exco: "AKAN DIMAKLUMKAN KELAK",
+            exco: "EXCO KESELAMATAN & KESIHATAN",
             careTaker: "Muhammad Taufiq bin Rosdan",
             dateStart: "13 Oktober 2025"
         },
@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
             phone: "01114144340",
             year: "Tahun 1",
             room: "337",
-            exco: "AKAN DIMAKLUMKAN KELAK",
+            exco: "EXCO PEMBANGUNAN INSAN & KESUKARELAWANAN",
             careTaker: "Muhammad Taufiq bin Rosdan",
             dateStart: "13 Oktober 2025"
         },
@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function() {
             phone: "0169491879",
             year: "Tahun 1",
             room: "423",
-            exco: "AKAN DIMAKLUMKAN KELAK",
+            exco: "EXCO AKADEMIK & KEPIMPINAN",
             careTaker: "Muhammad Taufiq bin Rosdan",
             dateStart: "13 Oktober 2025"
         },
@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', function() {
             phone: "0172837362",
             year: "Tahun 1",
             room: "224",
-            exco: "AKAN DIMAKLUMKAN KELAK",
+            exco: "EXCO SUKAN & REKREASI",
             careTaker: "Muhammad Taufiq bin Rosdan",
             dateStart: "13 Oktober 2025"
         },
@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', function() {
             phone: "0198478981",
             year: "Tahun 1",
             room: "224",
-            exco: "EXCO MULTIMEDIA & PUBLISITI",
+            exco: "EXCO KEBAJIKAN & KEROHANIAN",
             careTaker: "Muhammad Taufiq bin Rosdan",
             dateStart: "13 Oktober 2025"
         },
@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', function() {
             phone: "0123959904",
             year: "Tahun 1",
             room: "513",
-            exco: "TIMBALAN PRESIDEN",
+            exco: "EXCO MULTIMEDIA & PUBLISITI",
             careTaker: "Muhammad Taufiq bin Rosdan",
             dateStart: "13 Oktober 2025"
         },
@@ -234,7 +234,7 @@ document.addEventListener('DOMContentLoaded', function() {
             phone: "0168745612",
             year: "Tahun 1",
             room: "416",
-            exco: "AKAN DIMAKLUMKAN KELAK",
+            exco: "EXCO KELESTARIAN & ALAM SEKITAR",
             careTaker: "Muhammad Taufiq bin Rosdan",
             dateStart: "13 Oktober 2025"
         },
@@ -245,7 +245,7 @@ document.addEventListener('DOMContentLoaded', function() {
             phone: "01116924758",
             year: "Tahun 1",
             room: "328",
-            exco: "EXCO SUKAN & REKREASI",
+            exco: "EXCO MULTIMEDIA & PUBLISITI",
             careTaker: "Muhammad Taufiq bin Rosdan",
             dateStart: "13 Oktober 2025"
         },
