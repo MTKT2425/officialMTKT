@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
         "2251418": {
             status: "fail",
         },
-        "2250349": {
+        "2251651": {
             status: "fail",
         },
         "2250876": {
@@ -106,13 +106,13 @@ document.addEventListener('DOMContentLoaded', function() {
             careTaker: "Muhammad Nuramirul Afiq bin Mad Azhar",
             dateStart: "1 November 2025"
         },
-        "2251651": {
+        "2250349": {
             status: "success",
-            name: "SARAN A/L THAGARAJU",
-            faculty: "FAKULTI PENGAJIAN DAN PENGURUSAN PERTAHANAN",
-            phone: "01126729804",
+            name: "THIVYAN A/L THILAIKUMARAN ",
+            faculty: "FAKULTI KEJURUTERAAN",
+            phone: "01116500180",
             year: "Tahun 1",
-            room: "430",
+            room: "228",
             exco: "EXCO PEMBANGUNAN INSAN & KESUKARELAWANAN",
             careTaker: "Muhammad Taufiq bin Rosdan",
             dateStart: "13 Oktober 2025"
