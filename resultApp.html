@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEMAKAN KEPUTUSAN PENGAMBILAN MTKT</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS remains the same as before -->
+    <style>
+        /* Previous CSS content remains unchanged */
+        :root {
+            --primary: #5498db;
+            --success: #2ecc71;
+            --danger: #e74c3c;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .header {
+            background: var(--dark);
+            color: var(--white);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            opacity: 0.8;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .search-box {
+            display: flex;
+            margin-bottom: 30px;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: var(--border-radius) 0 0 var(--border-radius);
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary);
+        }
+
+        .search-box button {
+            padding: 0 25px;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+
+        .search-box button:hover {
+            background: #2980b9;
+        }
+
+        .result-container {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .success-result {
+            background: rgba(46, 204, 113, 0.1);
+            border: 1px solid var(--success);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .success-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .success-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--success);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+
+        .success-title h2 {
+            color: var(--success);
+            margin-bottom: 5px;
+        }
+
+        .success-title p {
+            color: var(--dark);
+            opacity: 0.8;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .detail-item h3 {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin-bottom: 5px;
+        }
+
+        .detail-item p {
+            font-size: 1.1rem;
+            color: var(--dark);
+            font-weight: 500;
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: var(--success);
+            color: var(--white);
+            border: none;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .download-btn:hover {
+            background: #27ae60;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .download-btn i {
+            margin-right: 8px;
+        }
+
+        .fail-message {
+            background: rgba(231, 76, 60, 0.1);
+            border: 1px solid var(--danger);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            text-align: center;
+            display: none;
+        }
+
+        .fail-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--danger);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 15px;
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+
+        .fail-message h2 {
+            color: var(--danger);
+            margin-bottom: 10px;
+        }
+
+        .fail-message p {
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .try-again {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--danger);
+            color: var(--white);
+            border: none;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
+            cursor: pointer;
+        }
+
+        .try-again:hover {
+            background: #c0392b;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: var(--light);
+            color: var(--dark);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .search-box {
+                flex-direction: column;
+            }
+            
+            .search-box input {
+                border-radius: var(--border-radius);
+                margin-bottom: 10px;
+            }
+            
+            .search-box button {
+                border-radius: var(--border-radius);
+                padding: 15px;
+            }
+        }
+    </style>
+    <!-- Add jsPDF library for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+    <!-- HTML structure remains the same as before -->
+    <div class="container">
+        <div class="header">
+            <h1>SEMAKAN KEPUTUSAN PENGAMBILAN</h1>
+            <p>Keahlian MTKT 2025/2026</p>
+        </div>
+        
+        <div class="content">
+            <div class="search-box">
+                <input type="text" id="studentId" placeholder="Masukkan Nombor Matrik anda" required>
+                <button id="checkBtn">Semak</button>
+            </div>
+            
+            <div id="successResult" class="result-container">
+                <div class="success-result">
+                    <div class="success-header">
+                        <div class="success-icon">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="success-title">
+                            <h2>Tahniah!</h2>
+                            <p>Permohonan anda diterima dan dilantik menjadi ahli MTKT.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="details-grid">
+                        <div class="detail-item">
+                            <h3>Nama Penuh</h3>
+                            <p id="resultName">John Doe</p>
+                        </div>
+                        <div class="detail-item">
+                            <h3>Nombor Matrik</h3>
+                            <p id="resultId">STD2023001</p>
+                        </div>
+                        <div class="detail-item">
+                            <h3>Fakulti</h3>
+                            <p id="resultFaculty">Computer Science</p>
+                        </div>
+                        <div class="detail-item">
+                            <h3>Nombor Telefon</h3>
+                            <p id="resultPhone">Engineering</p>
+                        </div>
+                        <div class="detail-item">
+                            <h3>Tahun Pengajian</h3>
+                            <p id="resultYear">Undergraduate</p>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="download-btn" id="downloadBtn">
+                        <i class="fas fa-download"></i> Cetak Slip Tawaran
+                    </a>
+                </div>
+            </div>
+            
+            <div id="failMessage" class="fail-message">
+                <div class="fail-icon">
+                    <i class="fas fa-times"></i>
+                </div>
+                <h2>Permohonan TIDAK BERJAYA!</h2>
+                <p></p>
+                <button class="try-again" id="tryAgainBtn">Cuba lagi</button>
+            </div>
+        </div>
+        
+        <footer>
+            <p>©2024 Majlis Tertinggi Kolej Tuah. All rights reserved.</p>
+        </footer>
+    </div>
+    </div>
+
+    <script>
+        // Initialize jsPDF
+        const { jsPDF } = window.jspdf;
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkBtn = document.getElementById('checkBtn');
+            const studentIdInput = document.getElementById('studentId');
+            const successResult = document.getElementById('successResult');
+            const failMessage = document.getElementById('failMessage');
+            const tryAgainBtn = document.getElementById('tryAgainBtn');
+            const downloadBtn = document.getElementById('downloadBtn');
+            
+            // Student database - replace with your actual data
+            const studentDatabase = {
+                "STD2023003": {
+                    status: "fail",
+                },
+
+                "2240224": {
+                    status: "success",
+                    name: "Muhammad Taufiq bin Rosdan",
+                    faculty: "Fakulti Pengajian dan Pengurusan Pertahanan",
+                    phone: "012-3456789",
+                    year: "Tahun 1",
+                    room: "_____",
+		    exco: "Multimedia",
+		    careTaker: "Muhammad Nuramirul Afiq bin Mad Azhar",
+		    dateStart: "1 November 2025"
+                }
+            };
+            
+            checkBtn.addEventListener('click', function() {
+                const studentId = studentIdInput.value.trim().toUpperCase();
+                
+                if (!studentId) {
+                    alert('Please enter your Student ID');
+                    return;
+                }
+                
+                // Simulate network delay
+                setTimeout(() => {
+                    const studentData = studentDatabase[studentId];
+                    
+                    if (studentData) {
+                        if (studentData.status === "success") {
+                            // Populate the success data
+                            document.getElementById('resultName').textContent = studentData.name;
+                            document.getElementById('resultId').textContent = studentId;
+                            document.getElementById('resultFaculty').textContent = studentData.faculty;
+                            document.getElementById('resultPhone').textContent = studentData.phone;
+                            document.getElementById('resultYear').textContent = studentData.year;
+                            
+                            // Show success result
+                            failMessage.style.display = 'none';
+                            successResult.style.display = 'block';
+                        } else {
+                            // Update fail message with reason
+                            document.querySelector('.fail-message p').textContent = 
+                                `Dukacita dimaklumkan permohonan anda tidak berjaya. Terima kasih.`;
+                            
+                            // Show fail message
+                            successResult.style.display = 'none';
+                            failMessage.style.display = 'block';
+                        }
+                    } else {
+                        // Student ID not found
+                        document.querySelector('.fail-message p').textContent = 
+                            'Tiada Rekod Permohonan.';
+                        
+                        successResult.style.display = 'none';
+                        failMessage.style.display = 'block';
+                    }
+                    
+                    // Scroll to result
+                    document.querySelector('.result-container, .fail-message').scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }, 500); // Simulate network delay
+            });
+            
+            tryAgainBtn.addEventListener('click', function() {
+                failMessage.style.display = 'none';
+                studentIdInput.focus();
+            });
+            
+            downloadBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                generateAdmissionSlip();
+            });
+            
+            function generateAdmissionSlip() {
+    const studentId = studentIdInput.value.trim().toUpperCase();
+    const studentData = studentDatabase[studentId];
+    
+    if (!studentData || studentData.status !== "success") return;
+    
+    // Create new PDF in landscape mode (better for admission slips)
+    const doc = new jsPDF({
+        orientation: "potrait",
+        unit: "mm"
+    });
+
+    // Set document properties
+    doc.setProperties({
+        title: `Slip Tawaran MTKT - ${studentData.name}`,
+        subject: 'Tawaran Keahlian MTKT',
+        author: 'Majlis Tertinggi Kolej Tuah',
+        keywords: 'admission, university, slip',
+        creator: 'Majlis Tertinggi Kolej Tuah'
+    });
+
+    // Add background watermark
+    doc.setFillColor(240, 240, 240);
+    doc.rect(0, 0, doc.internal.pageSize.width, doc.internal.pageSize.height, 'F');
+    doc.setTextColor(200, 200, 200);
+    doc.setFontSize(40);
+    doc.text("", 140, 230, { angle: 45, align: 'center' });
+    
+    // Reset text color
+    doc.setTextColor(0, 0, 0);
+
+    // Add header with university info
+    doc.setFillColor(44, 62, 80); // Dark blue
+    doc.rect(0, 0, doc.internal.pageSize.width, 20, 'F');
+    doc.setTextColor(255, 255, 255);
+    doc.setFontSize(16);
+    doc.setFont("helvetica", "bold");
+    doc.text("SLIP TAWARAN KEAHLIAN BADAN PELAJAR", 108, 10, { align: 'center' });
+    doc.setFontSize(10);
+    doc.text("MAJLIS TERTINGGI KOLEJ TUAH (MTKT)", 108, 15, { align: 'center' });
+
+    // Main content container
+    doc.setDrawColor(44, 62, 80);
+    doc.setLineWidth(0.5);
+    doc.rect(10, 25, doc.internal.pageSize.width - 20, doc.internal.pageSize.height - 35);
+
+    // Student photo placeholder with border
+    doc.setFillColor(255, 255, 255);
+    doc.rect(15, 31, 34, 43, 'F');
+    doc.addImage("https://via.placeholder.com/150x200?text=Photo", "JPEG", 15, 31, 34, 43);
+    doc.rect(15, 31, 34, 43); // Border
+
+    // Student information section
+    doc.setTextColor(44, 62, 80);
+    doc.setFontSize(12);
+    doc.setFont("helvetica", "bold");
+    doc.text("MAKLUMAT DIRI", 54, 35);
+    
+    doc.setFont("helvetica", "normal");
+    doc.text(`Nama Penuh : ${studentData.name}`, 54, 42);
+    doc.text(`Nombor Matrik : ${studentId}`, 54, 48);
+    doc.text(`Fakulti : ${studentData.faculty}`, 54, 54);
+    doc.text(`No Telefon : ${studentData.phone}`, 54, 60);
+    doc.text(`No Bilik : ${studentData.room}`, 54, 66);
+
+    // Academic details section
+    doc.setFont("helvetica", "bold");
+    doc.text("MAKLUMAT LANTIKAN", 54, 78);
+    
+    doc.setFont("helvetica", "normal");
+    doc.text(`Jawatan : ${studentData.exco}`, 54, 85);
+    doc.text(`Caretaker : ${studentData.careTaker}`, 54, 91);
+    doc.text(`Tarikh Mula Lantikan : ${studentData.dateStart}`, 54, 97);
+    doc.text(`Tarikh Tamat Lantikan : __ Oktober 2026`, 54, 103);
+    doc.setFontSize(10);
+    doc.text(`Saya, dengan penuh rasa tanggungjawab dan kesedaran, BERJANJI akan melaksanakan tugas dan amanah`, 15, 165);
+    doc.text(`sebagai ahli MTKT dengan sepenuh komitmen saya dan sebaik-baiknya serta mematuhi Perlembagaan MTKT.`, 15, 170);
+    doc.text(`Saya berikrar akan:`, 15, 180);
+    doc.text(`1. Memegang amanah ini dengan penuh integriti, ketelusan dan rasa tanggungjawab demi kepentingan mahasiswa,`, 15, 190);
+    doc.text(`institusi, dan masyarakat.`, 19, 195);
+    doc.text(`2. Menolak segala bentuk salah guna kuasa, unsur pilih kasih, dan kepentingan peribadi dalam menjalankan`, 15, 200);
+    doc.text(`tugas kepimpinan.`, 19, 205);
+    doc.text(`3. Bekerja secara profesional, berdisiplin dan sistematik dalam setiap tindakan, mesyuarat dan urusan pentadbiran.`, 15, 210);
+    doc.text(`4. Mengutamakan kepentingan bersama berbanding kepentingan individu atau kumpulan, dan sentiasa bersikap adil`, 15, 215);
+    doc.text(`serta terbuka dalam membuat keputusan.`, 19, 220);
+    doc.text(`5. Menjadi agen perubahan yang berani bersuara dan berfikir secara kritikal, serta komited menyuarakan isu-isu`, 15, 225);
+    doc.text(`mahasiswa di Kolej Kediaman secara berhemah dan berfakta.`, 19, 230);
+    doc.text(`6. Menjaga nama baik dan reputasi universiti, serta tidak terlibat dalam sebarang aktiviti yang boleh mencemarkan`, 15, 235);
+    doc.text(`imej institusi.`, 19, 240);
+    doc.text(`7. Sanggup ditegur dan bersedia memperbaiki kelemahan diri, demi memperkukuh kepercayaan mahasiswa`, 15, 245);
+    doc.text(`MTKT.`, 19, 250);
+
+    // University seal and barcode
+    doc.addImage("https://via.placeholder.com/80x80?text=University+Seal", "JPEG", 180, 30, 25, 25);
+    doc.addImage("https://via.placeholder.com/80x30?text=Barcode+"+studentId, "JPEG", 180, 60, 25, 10);
+
+    // Important notes section
+    doc.setFontSize(10);
+    doc.setFont("helvetica", "bold");
+    doc.text("MAKLUMAT PENTING", 15, 120);
+    doc.text("AKU JANJI AHLI MTKT", 15, 160);
+    
+    doc.setFont("helvetica", "normal");
+    doc.text("1. Slip ini perlu DICETAK dan DITANDATANGANI oleh ahli baharu.", 15, 125);
+    doc.text("2. Slip ini perlu dibawa ke Mesyuarat Sulung MTKT 2025/26.", 15, 130);
+    doc.text("3. Slip ini menunjukkan pengesahan rasmi sebagai ahli MTKT.", 15, 135);
+    doc.text("4. Ahli MTKT perlu menampal gambar bersaiz passport di ruangan gambar.", 15, 140);
+
+    // Signature section
+    doc.setFontSize(10);
+    doc.text("Tandatangan Penasihat: _________________________", 109, 275);
+    doc.text("Tarikh: _______________", 109, 283);
+    
+    doc.text("Tandatangan Ahli: _________________________", 15, 275);
+    doc.text("Tarikh: _______________", 15, 283);
+
+    // Footer
+    doc.setFontSize(8);
+    doc.setTextColor(100, 100, 100);
+    doc.text('Slip Tawaran ini adalah cetakan komputer.', 15, 293, { align: 'left' });
+    doc.text(`Dicetak pada : ${new Date().toLocaleString()}`, 198, 293, { align: 'right' });
+
+    // Save the PDF
+    doc.save(`Slip Tawaran MTKT - ${studentId}.pdf`);
+}
+
+// Helper function to calculate expected graduation year
+function calculateGraduation(academicYear, role) {
+    const years = role.toLowerCase().includes("postgraduate") ? 2 : 4;
+    const startYear = parseInt(academicYear.split('/')[0]);
+    return `${startYear + years}/${startYear + years + 1}`;
+}
+        });
+    </script>
+</body>
+</html>
