@@ -685,8 +685,8 @@ form button[type="submit"]:hover { background-color: #8b7a80; }
   .slide-container iframe { height: 60vh; }
 }
 
-@media (width < 768px) {
-  .slide-container, .slide-containertakwim, .slide-containerdirektori { padding-top: 5rem; }
+@media (width <= 768px) {
+  .slide-container, .slide-containertakwim, .slide-containerdirektori, .spacer { padding-top: 5rem; }
 }
 
 @media (width < 540px) {
