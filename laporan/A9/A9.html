@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTKTNews</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .gallery-container {
+            position: relative;
+            height: 500px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slide-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            color: white;
+            padding: 15px 20px;
+            font-size: 1.2rem;
+        }
+
+        .navigation {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .nav-dot.active {
+            background-color: white;
+        }
+
+        .report-section {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .report-section h2 {
+		text-align: justify;
+        color: #2c3e50;
+        margin-bottom: 15px;
+        font-size: 1.8rem;
+        }
+
+        .report-section p {
+		text-align: justify;
+		color: #555;
+		font-size: 1.05rem;
+		white-space: pre-wrap; /* preserve line breaks and spacing */
+		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		}
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .gallery-container {
+                height: 300px;
+            }
+            
+            .slide-caption {
+                font-size: 1rem;
+                padding: 10px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-container {
+                height: 250px;
+            }
+            
+            body {
+                padding: 15px;
+            }
+            
+            .report-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="gallery-container">
+        <div class="slide active">
+            <img src="1.jpeg" alt="">
+        </div>
+        <div class="slide">
+            <img src="2.jpeg" alt="">
+        </div>
+        <div class="slide">
+            <img src="3.jpeg" alt="">
+        </div>
+        <div class="slide">
+            <img src="4.jpeg" alt="">
+        </div>
+        <!--<div class="slide">
+            <img src="5.jpeg" alt="">
+        </div>
+        <div class="slide">
+            <img src="6.jpeg" alt="">
+        </div>-->
+        
+        <div class="navigation">
+            <div class="nav-dot active" data-index="0"></div>
+            <div class="nav-dot" data-index="1"></div>
+            <div class="nav-dot" data-index="2"></div>
+            <div class="nav-dot" data-index="3"></div>
+            <!--<div class="nav-dot" data-index="4"></div>
+            <div class="nav-dot" data-index="5"></div>-->
+        </div>
+    </div>
+
+    <div class="report-section">
+        <h2>AD HONG BERJAYA DITANGKAP DALAM SERBUAN PENGUATKUASAAN PERATURAN KOLEJ FASA 1</h2>
+        <p>27 Oktober, 12:30 AM:  7 orang pelajar yang dikenali sebagai Ad Hong (Penginap Tanpa Izin) berjaya ditahan oleh pasukan penguatkuasaan yang terdiri daripada Felo Kolej Tuah, Felo Bertugas dan Majlis Tertinggi Kolej Tuah (MTKT) dalam satu operasi mengejut tengah malam tadi.</p>
+		
+		<p>
+Serbuan tersebut merupakan sebahagian daripada Fasa Pertama Penguatkuasaan Peraturan Kolej yang dijalankan bagi memastikan semua pelajar mematuhi peraturan serta etika kediaman yang telah ditetapkan oleh pihak kolej.
+</p>
+
+		<p>
+Menurut wakil MTKT, operasi dijalankan dengan kerjasama rapat antara Felo dan barisan kepimpinan pelajar bagi memupuk disiplin serta menjaga keharmonian komuniti kolej.
+</p>
+
+		<p>
+“Ini merupakan langkah awal sebelum kita melaksanakan pemeriksaan menyeluruh bagi fasa seterusnya. Diharapkan semua pelajar akan lebih peka terhadap peraturan kolej,” ujar salah seorang wakil MTKT yang terlibat. Operasi malam tadi berjalan lancar dan mendapat kerjasama baik daripada semua pihak yang terlibat.
+</p>
+	
+<p>
+“𝐃𝐚𝐫𝐢 𝐏𝐞𝐥𝐚𝐣𝐚𝐫, 𝐔𝐧𝐭𝐮𝐤 𝐏𝐞𝐥𝐚𝐣𝐚𝐫.” 💛
+
+𝐒𝐚𝐲𝐚 𝐲𝐚𝐧𝐠 𝐦𝐞𝐧𝐣𝐚𝐥𝐚𝐧𝐤𝐚𝐧 𝐚𝐦𝐚𝐧𝐚𝐡,
+𝐌𝐀𝐉𝐋𝐈𝐒 𝐓𝐄𝐑𝐓𝐈𝐍𝐆𝐆𝐈 𝐊𝐎𝐋𝐄𝐉 𝐓𝐔𝐀𝐇 (𝐌𝐓𝐊𝐓)
+𝐒𝐢𝐝𝐚𝐧𝐠 𝟐𝟎𝟐𝟓/𝟐𝟎𝟐𝟔
+𝐔𝐧𝐢𝐯𝐞𝐫𝐬𝐢𝐭𝐢 𝐏𝐞𝐫𝐭𝐚𝐡𝐚𝐧𝐚𝐧 𝐍𝐚𝐬𝐢𝐨𝐧𝐚𝐥 𝐌𝐚𝐥𝐚𝐲𝐬𝐢𝐚
+
+𝐈𝐤𝐮𝐭𝐢 𝐩𝐞𝐫𝐤𝐞𝐦𝐛𝐚𝐧𝐠𝐚𝐧 𝐤𝐚𝐦𝐢:
+📱𝐈𝐧𝐬𝐭𝐚𝐠𝐫𝐚𝐦: @𝐤𝐨𝐥𝐞𝐣_𝐭𝐮𝐚𝐡
+🎶 𝐓𝐢𝐤𝐭𝐨𝐤: @𝐦𝐭𝐤𝐭.𝐮𝐩𝐧𝐦
+📧 𝐤𝐨𝐥𝐞𝐣𝐭𝐮𝐚𝐡@𝐮𝐩𝐧𝐦.𝐞𝐝𝐮.𝐦𝐲
+</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.nav-dot');
+            let currentSlide = 0;
+            const slideInterval = 2000; // 4 seconds
+            
+            // Function to show a specific slide
+            function showSlide(index) {
+                // Remove active class from all slides and dots
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                
+                // Add active class to current slide and dot
+                slides[index].classList.add('active');
+                dots[index].classList.add('active');
+                
+                currentSlide = index;
+            }
+            
+            // Function to show next slide
+            function nextSlide() {
+                let nextIndex = (currentSlide + 1) % slides.length;
+                showSlide(nextIndex);
+            }
+            
+            // Set up automatic sliding
+            let slideTimer = setInterval(nextSlide, slideInterval);
+            
+            // Add click events to navigation dots
+            dots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    clearInterval(slideTimer);
+                    showSlide(parseInt(this.getAttribute('data-index')));
+                    slideTimer = setInterval(nextSlide, slideInterval);
+                });
+            });
+            
+            // Pause slideshow on hover
+             const galleryContainer = document.querySelector('.gallery-container');
+             galleryContainer.addEventListener('mouseenter', function() {
+                 clearInterval(slideTimer);
+             });
+            
+            galleryContainer.addEventListener('mouseleave', function() {
+                slideTimer = setInterval(nextSlide, slideInterval);
+            });
+        });
+    </script>
+</body>
+</html>
