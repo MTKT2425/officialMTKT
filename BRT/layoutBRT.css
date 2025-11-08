@@ -102,7 +102,7 @@ body {
     font-size: 1.1em;
     line-height: 1.6;
     margin-bottom: 20px;
-    text-align: justify;
+    text-align: left;
 }
 
 .info-btn {
@@ -154,3 +154,4 @@ body {
 	font-size: 0.7em
     }
 }
+
