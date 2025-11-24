@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUPER STAR 2025</title>
+    <style>
+        /* Updated CSS for better responsiveness */
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2980b9;
+    --accent-color: #e74c3c;
+    --light-color: #ecf0f1;
+    --dark-color: #2c3e50;
+    --success-color: #2ecc71;
+    --warning-color: #f39c12;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    text-align: center;
+    padding: 1.5rem 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: 0.5rem;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+    flex: 1;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+}
+
+.tab-btn {
+    padding: 0.7rem 1.2rem;
+    background-color: var(--light-color);
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--dark-color);
+    transition: all 0.3s ease;
+    border-radius: 4px;
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
+}
+
+.tab-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.tab-content {
+    display: none;
+    width: 100%;
+}
+
+.tab-content.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.group-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    width: 100%;
+}
+
+.group {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    padding: 1.25rem;
+    width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+}
+
+.group h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--light-color);
+    position: sticky;
+    left: 0;
+}
+
+table {
+    width: 100%;
+    max-width: 900px;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+}
+
+th, td {
+    padding: 0.75rem;
+    text-align: center;
+    white-space: nowrap;
+}
+
+th {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+}
+
+tr:nth-child(even) {
+    background-color: var(--light-color);
+}
+
+tr:hover {
+    background-color: #e0e0e0;
+}
+
+.team-cell {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+}
+
+.fixtures {
+    margin-top: 1.5rem;
+    width: 100%;
+}
+
+.match {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+}
+
+.match-info {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.match-teams {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.team {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.team-name {
+    font-weight: 600;
+    word-break: break-word;
+}
+
+.score {
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 0 0.5rem;
+    text-align: center;
+}
+
+.match-date {
+    color: var(--dark-color);
+    font-weight: 600;
+}
+
+.match-status {
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    width: fit-content;
+}
+
+.status-upcoming {
+    background-color: var(--light-color);
+    color: var(--dark-color);
+}
+
+.status-live {
+    background-color: var(--warning-color);
+    color: white;
+    animation: pulse 1.5s infinite;
+}
+
+.status-completed {
+    background-color: var(--success-color);
+    color: white;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    margin-top: 2rem;
+    background-color: var(--dark-color);
+    color: white;
+    width: 100%;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+    .match {
+        grid-template-columns: 1fr 2fr;
+        align-items: center;
+    }
+    
+    .match-info {
+        text-align: left;
+        align-items: flex-start;
+    }
+    
+    .group {
+        flex: 1;
+        min-width: 0;
+    }
+    
+    .tab-btn {
+        flex: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .match-teams {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .team {
+        justify-content: center;
+    }
+    
+    .score {
+        margin: 0.5rem 0;
+    }
+    
+    .tab-btn {
+        min-width: 100px;
+        padding: 0.6rem 0.8rem;
+        font-size: 0.85rem;
+    }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>SUPER STAR 2025</h1>
+        <p>Organised by: Majlis Tertinggi Kolej Tuah (MTKT)</p>
+    </header>
+
+    <div class="container">
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openTab('standings')">Standings</button>
+            <button class="tab-btn" onclick="openTab('fixtures')">Fixtures</button>
+            <!--<button class="tab-btn" onclick="openTab('admin')">Admin Panel</button>-->
+        </div>
+
+        <div id="standings" class="tab-content active">
+            <div class="group-container">
+                <div class="group">
+                    <h2>Group A</h2>
+                    <table id="groupA-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Team</th>
+                                <th>M</th>
+                                <th>W</th>
+                                <th>D</th>
+                                <th>L</th>
+                                <th>GF</th>
+                                <th>GA</th>
+                                <th>GD</th>
+                                <th>Pts</th>
+                            </tr>
+                        </thead>
+                        <tbody id="groupA-body">
+                            <!-- Teams will be inserted here by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="group">
+                    <h2>Group B</h2>
+                    <table id="groupB-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Team</th>
+                                <th>M</th>
+                                <th>W</th>
+                                <th>D</th>
+                                <th>L</th>
+                                <th>GF</th>
+                                <th>GA</th>
+                                <th>GD</th>
+                                <th>Pts</th>
+                            </tr>
+                        </thead>
+                        <tbody id="groupB-body">
+                            <!-- Teams will be inserted here by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    <div id="fixtures" class="tab-content">
+    <div class="fixtures">
+        <h2>Upcoming Matches</h2>
+        <div id="upcoming-matches">
+            <!-- Matches will be inserted here by JavaScript -->
+        </div>
+
+        <h2 style="margin-top: 2rem;">Completed Matches</h2>
+        <div id="completed-matches">
+            <!-- Matches will be inserted here by JavaScript -->
+        </div>
+
+        <h2 style="margin-top: 2rem;">Knockout Stage</h2>
+
+	<div style="background: white; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-top: 15px;">
+  	<div style="font-weight: bold; color: #666;">Jun 1, 12:10 PM</div>
+	<div style="display: flex; justify-content: center; align-items: center; margin-top: 5px; gap: 20px;">
+	    <span style="width: 100px; text-align: right;">ROAD TO GLORY</span>
+	    <span style="font-weight: bold; width: 60px; text-align: center;">5 - 0</span>
+	    <span style="width: 100px; text-align: left;">RANGGI FC</span>
+  	</div>
+	</div>
+
+        <div style="background: white; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-top: 15px;">
+  	<div style="font-weight: bold; color: #666;">Jun 1, 12:50 PM</div>
+	<div style="display: flex; justify-content: center; align-items: center; margin-top: 5px; gap: 20px;">
+	    <span style="width: 100px; text-align: right;">YAP FC</span>
+	    <span style="font-weight: bold; width: 60px; text-align: center;">1 - 0</span>
+	    <span style="width: 100px; text-align: left;">JASIN RIM FC</span>
+  	</div>
+	</div>
+
+        <div style="background: white; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-top: 15px;">
+  	<div style="font-weight: bold; color: #666;">Jun 1, 13:30 PM</div>
+	<div style="display: flex; justify-content: center; align-items: center; margin-top: 5px; gap: 20px;">
+	    <span style="width: 100px; text-align: right;">RANGGI FC</span>
+	    <span style="font-weight: bold; width: 60px; text-align: center;">(3) 1 - 1 (2)</span>
+	    <span style="width: 100px; text-align: left;">JASIN RIM FC</span>
+  	</div>
+	</div>
+
+
+        <div style="background: white; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-top: 15px;">
+  	<div style="font-weight: bold; color: #666;">Jun 1, 14:10 PM</div>
+	<div style="display: flex; justify-content: center; align-items: center; margin-top: 5px; gap: 20px;">
+	    <span style="width: 100px; text-align: right;">ROAD TO GLORY</span>
+	    <span style="font-weight: bold; width: 60px; text-align: center;">0 - 1</span>
+	    <span style="width: 100px; text-align: left;">YAP FC</span>
+  	</div>
+	</div>
+</div>
+</div>
+</div>
+
+        
+
+    <footer>
+        <p>&copy; 2025 Majlis Tertinggi Kolej Tuah. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Tournament data
+        const tournamentData = {
+            teams: {
+                groupA: [
+                    { id: 'A1', name: 'JASIN RIM FC'},
+                    { id: 'A2', name: 'VORTEX FC'},
+                    { id: 'A3', name: 'BUBADIBAKO'},
+                    { id: 'A4', name: 'ROAD TO GLORY'},
+                    { id: 'A5', name: 'STRAVELLA FC'},
+                    { id: 'A6', name: 'APEX FC'}
+                ],
+                groupB: [
+                    { id: 'B1', name: 'RANGGI FC'},
+                    { id: 'B2', name: 'YAP FC'},
+                    { id: 'B3', name: 'REAL CHOP FC'},
+                    { id: 'B4', name: 'BUJANG BC'},
+                    { id: 'B5', name: 'MARINES FC'}
+                ]
+            },
+            matches: [
+                // Day 1 matches
+                // { id: 1, group: 'A', home: 'A1', away: 'A2', date: '2025-05-31', time: '', status: 'completed', homeScore: 2, awayScore: 1 },
+                { id: 1, group: 'A', home: 'A1', away: 'A2', date: '2025-05-31', time: '08:00', status: 'completed', homeScore: 0, awayScore: 3},
+		{ id: 2, group: 'B', home: 'B1', away: 'B2', date: '2025-05-31', time: '08:35', status: 'completed', homeScore: 1, awayScore: 3},
+		{ id: 3, group: 'A', home: 'A3', away: 'A4', date: '2025-05-31', time: '09:10', status: 'completed', homeScore: 1, awayScore: 1},
+		{ id: 4, group: 'B', home: 'B3', away: 'B4', date: '2025-05-31', time: '09:45', status: 'completed', homeScore: 1, awayScore: 0},
+		{ id: 5, group: 'A', home: 'A5', away: 'A6', date: '2025-05-31', time: '10:20', status: 'completed', homeScore: 0, awayScore: 0},
+		{ id: 6, group: 'B', home: 'B1', away: 'B3', date: '2025-05-31', time: '10:55', status: 'completed', homeScore: 2, awayScore: 0},
+		{ id: 7, group: 'A', home: 'A1', away: 'A3', date: '2025-05-31', time: '11:30', status: 'completed', homeScore: 3, awayScore: 0},
+		{ id: 8, group: 'B', home: 'B2', away: 'B4', date: '2025-05-31', time: '12:05', status: 'completed', homeScore: 3, awayScore: 1},
+		{ id: 9, group: 'A', home: 'A2', away: 'A5', date: '2025-05-31', time: '12:40', status: 'completed', homeScore: 1, awayScore: 1},
+		{ id: 10, group: 'B', home: 'B1', away: 'B4', date: '2025-05-31', time: '13:15', status: 'completed', homeScore: 3, awayScore: 2},
+		{ id: 11, group: 'A', home: 'A4', away: 'A6', date: '2025-05-31', time: '13:50', status: 'completed', homeScore: 2, awayScore: 2},
+		{ id: 12, group: 'B', home: 'B2', away: 'B3', date: '2025-05-31', time: '14:25', status: 'completed', homeScore: 5, awayScore: 0},
+		{ id: 13, group: 'A', home: 'A1', away: 'A4', date: '2025-05-31', time: '15:00', status: 'completed', homeScore: 0, awayScore: 1},
+		{ id: 14, group: 'A', home: 'A2', away: 'A6', date: '2025-05-31', time: '15:35', status: 'completed', homeScore: 1, awayScore: 1},
+		{ id: 15, group: 'A', home: 'A3', away: 'A5', date: '2025-05-31', time: '16:10', status: 'completed', homeScore: 3, awayScore: 0},
+		{ id: 16, group: 'A', home: 'A2', away: 'A4', date: '2025-05-31', time: '16:45', status: 'completed', homeScore: 0, awayScore: 0},
+		{ id: 17, group: 'A', home: 'A1', away: 'A6', date: '2025-05-31', time: '17:20', status: 'completed', homeScore: 2, awayScore: 1},
+		{ id: 18, group: 'A', home: 'A2', away: 'A3', date: '2025-05-31', time: '17:55', status: 'completed', homeScore: 1, awayScore: 1},
+                // More matches would be added here...
+		{ id: 19, group: 'A', home: 'A1', away: 'A5', date: '2025-06-01', time: '08:00', status: 'completed', homeScore: 3, awayScore: 0},
+		{ id: 20, group: 'B', home: 'B1', away: 'B5', date: '2025-06-01', time: '08:35', status: 'completed', homeScore: 2, awayScore: 0},
+		{ id: 21, group: 'A', home: 'A4', away: 'A5', date: '2025-06-01', time: '09:10', status: 'completed', homeScore: 5, awayScore: 1},
+		{ id: 22, group: 'B', home: 'B2', away: 'B5', date: '2025-06-01', time: '09:45', status: 'completed', homeScore: 3, awayScore: 0},
+		{ id: 23, group: 'A', home: 'A3', away: 'A6', date: '2025-06-01', time: '10:20', status: 'upcoming'},
+		{ id: 24, group: 'B', home: 'B5', away: 'B3', date: '2025-06-01', time: '10:55', status: 'completed', homeScore: 5, awayScore: 2},
+		{ id: 25, group: 'B', home: 'B5', away: 'B4', date: '2025-06-01', time: '11:30', status: 'completed', homeScore: 3, awayScore: 3},
+                
+            ]
+		  
+        };
+
+        // Initialize standings data
+        function initializeStandings() {
+            const standings = { groupA: {}, groupB: {} };
+
+            // Initialize Group A teams
+            tournamentData.teams.groupA.forEach(team => {
+                standings.groupA[team.id] = {
+                    id: team.id,
+                    name: team.name,
+                    logo: team.logo,
+                    played: 0,
+                    wins: 0,
+                    draws: 0,
+                    losses: 0,
+                    goalsFor: 0,
+                    goalsAgainst: 0,
+                    points: 0
+                };
+            });
+
+            // Initialize Group B teams
+            tournamentData.teams.groupB.forEach(team => {
+                standings.groupB[team.id] = {
+                    id: team.id,
+                    name: team.name,
+                    logo: team.logo,
+                    played: 0,
+                    wins: 0,
+                    draws: 0,
+                    losses: 0,
+                    goalsFor: 0,
+                    goalsAgainst: 0,
+                    points: 0
+                };
+            });
+
+            return standings;
+        }
+
+        let standings = initializeStandings();
+
+        // Calculate standings based on match results
+        function calculateStandings() {
+            // Reset standings
+            standings = initializeStandings();
+
+            // Process completed matches
+            tournamentData.matches.forEach(match => {
+                if (match.status === 'completed') {
+                    const group = match.group === 'A' ? 'groupA' : 'groupB';
+                    const homeTeam = standings[group][match.home];
+                    const awayTeam = standings[group][match.away];
+
+                    // Update played matches
+                    homeTeam.played++;
+                    awayTeam.played++;
+
+                    // Update goals
+                    homeTeam.goalsFor += match.homeScore;
+                    homeTeam.goalsAgainst += match.awayScore;
+                    awayTeam.goalsFor += match.awayScore;
+                    awayTeam.goalsAgainst += match.homeScore;
+
+                    // Update points and results
+                    if (match.homeScore > match.awayScore) {
+                        homeTeam.wins++;
+                        homeTeam.points += 3;
+                        awayTeam.losses++;
+                    } else if (match.homeScore < match.awayScore) {
+                        awayTeam.wins++;
+                        awayTeam.points += 3;
+                        homeTeam.losses++;
+                    } else {
+                        homeTeam.draws++;
+                        awayTeam.draws++;
+                        homeTeam.points += 1;
+                        awayTeam.points += 1;
+                    }
+                }
+            });
+
+            // Sort teams in each group
+            const sortedGroupA = Object.values(standings.groupA).sort((a, b) => {
+                if (b.points !== a.points) return b.points - a.points;
+                if ((b.goalsFor - b.goalsAgainst) !== (a.goalsFor - a.goalsAgainst)) 
+                    return (b.goalsFor - b.goalsAgainst) - (a.goalsFor - a.goalsAgainst);
+                return b.goalsFor - a.goalsFor;
+            });
+
+            const sortedGroupB = Object.values(standings.groupB).sort((a, b) => {
+                if (b.points !== a.points) return b.points - a.points;
+                if ((b.goalsFor - b.goalsAgainst) !== (a.goalsFor - a.goalsAgainst)) 
+                    return (b.goalsFor - b.goalsAgainst) - (a.goalsFor - a.goalsAgainst);
+                return b.goalsFor - a.goalsFor;
+            });
+
+            return { groupA: sortedGroupA, groupB: sortedGroupB };
+        }
+
+        // Render standings tables
+        function renderStandings() {
+            const calculatedStandings = calculateStandings();
+
+            // Render Group A
+            const groupABody = document.getElementById('groupA-body');
+            groupABody.innerHTML = '';
+            calculatedStandings.groupA.forEach((team, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td class="team-cell">${team.name}</td>
+                    <td>${team.played}</td>
+                    <td>${team.wins}</td>
+                    <td>${team.draws}</td>
+                    <td>${team.losses}</td>
+                    <td>${team.goalsFor}</td>
+                    <td>${team.goalsAgainst}</td>
+                    <td>${team.goalsFor - team.goalsAgainst}</td>
+                    <td><strong>${team.points}</strong></td>
+                `;
+                groupABody.appendChild(row);
+            });
+
+            // Render Group B
+            const groupBBody = document.getElementById('groupB-body');
+            groupBBody.innerHTML = '';
+            calculatedStandings.groupB.forEach((team, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td class="team-cell">${team.name}</td>
+                    <td>${team.played}</td>
+                    <td>${team.wins}</td>
+                    <td>${team.draws}</td>
+                    <td>${team.losses}</td>
+                    <td>${team.goalsFor}</td>
+                    <td>${team.goalsAgainst}</td>
+                    <td>${team.goalsFor - team.goalsAgainst}</td>
+                    <td><strong>${team.points}</strong></td>
+                `;
+                groupBBody.appendChild(row);
+            });
+        }
+
+        // Render matches
+        // Render matches
+        function renderMatches() {
+            const upcomingContainer = document.getElementById('upcoming-matches');
+            const completedContainer = document.getElementById('completed-matches');
+            
+            upcomingContainer.innerHTML = '';
+            completedContainer.innerHTML = '';
+
+            // Sort matches by date (newest first for completed, oldest first for upcoming)
+            const sortedMatches = [...tournamentData.matches].sort((a, b) => {
+                return new Date(a.date) - new Date(b.date);
+            });
+
+            sortedMatches.forEach(match => {
+                const matchElement = document.createElement('div');
+                matchElement.className = 'match';
+
+                const homeTeam = match.group === 'A' 
+                    ? tournamentData.teams.groupA.find(t => t.id === match.home) 
+                    : tournamentData.teams.groupB.find(t => t.id === match.home);
+                
+                const awayTeam = match.group === 'A' 
+                    ? tournamentData.teams.groupA.find(t => t.id === match.away) 
+                    : tournamentData.teams.groupB.find(t => t.id === match.away);
+
+                const matchDate = new Date(`${match.date}T${match.time}`);
+                const formattedDate = matchDate.toLocaleDateString('en-US', { 
+                    weekday: 'short', 
+                    month: 'short', 
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+
+                let statusClass = 'status-upcoming';
+                let statusText = 'Upcoming';
+                
+                if (match.status === 'completed') {
+                    statusClass = 'status-completed';
+                    statusText = 'Completed';
+                } else if (match.status === 'live') {
+                    statusClass = 'status-live';
+                    statusText = 'Live';
+                }
+
+                matchElement.innerHTML = `
+                    <div class="match-info">
+                        <div class="match-date">${formattedDate}</div>
+                        <div class="match-status ${statusClass}">${statusText}</div>
+                    </div>
+                    <div class="match-teams">
+                        <div class="team">
+                            <span class="team-name">${homeTeam.name}</span>
+                        </div>
+                        <div class="score">
+                            ${match.status === 'completed' || match.status === 'live' ? `${match.homeScore} - ${match.awayScore}` : 'vs'}
+                        </div>
+                        <div class="team">
+                            <span class="team-name">${awayTeam.name}</span>
+                        </div>
+                    </div>
+                `;
+
+                if (match.status === 'completed') {
+                    completedContainer.appendChild(matchElement);
+                } else {
+                    upcomingContainer.appendChild(matchElement);
+                }
+            });
+        }
+
+        // Populate match select dropdown in admin panel
+        function populateMatchSelect() {
+            const matchSelect = document.getElementById('match-select');
+            matchSelect.innerHTML = '<option value="">Select a match</option>';
+
+            tournamentData.matches.forEach(match => {
+                const homeTeam = match.group === 'A' 
+                    ? tournamentData.teams.groupA.find(t => t.id === match.home) 
+                    : tournamentData.teams.groupB.find(t => t.id === match.home);
+                
+                const awayTeam = match.group === 'A' 
+                    ? tournamentData.teams.groupA.find(t => t.id === match.away) 
+                    : tournamentData.teams.groupB.find(t => t.id === match.away);
+
+                const option = document.createElement('option');
+                option.value = match.id;
+                option.textContent = `${homeTeam.name} vs ${awayTeam.name} (${match.date})`;
+                matchSelect.appendChild(option);
+            });
+        }
+
+        // Populate match select dropdown in admin panel
+        function populateMatchSelect() {
+            const matchSelect = document.getElementById('match-select');
+            matchSelect.innerHTML = '<option value="">Select a match</option>';
+
+            tournamentData.matches.forEach(match => {
+                const homeTeam = match.group === 'A' 
+                    ? tournamentData.teams.groupA.find(t => t.id === match.home) 
+                    : tournamentData.teams.groupB.find(t => t.id === match.home);
+                
+                const awayTeam = match.group === 'A' 
+                    ? tournamentData.teams.groupA.find(t => t.id === match.away) 
+                    : tournamentData.teams.groupB.find(t => t.id === match.away);
+
+                const option = document.createElement('option');
+                option.value = match.id;
+                option.textContent = `${homeTeam.name} vs ${awayTeam.name} (${match.date})`;
+                matchSelect.appendChild(option);
+            });
+        }
+
+        // Update match result
+        function updateMatchResult() {
+            const matchSelect = document.getElementById('match-select');
+            const homeScoreInput = document.getElementById('home-score');
+            const awayScoreInput = document.getElementById('away-score');
+
+            const matchId = parseInt(matchSelect.value);
+            const homeScore = parseInt(homeScoreInput.value);
+            const awayScore = parseInt(awayScoreInput.value);
+
+            if (!matchId || isNaN(homeScore) || isNaN(awayScore)) {
+                alert('Please select a match and enter valid scores');
+                return;
+            }
+
+            const matchIndex = tournamentData.matches.findIndex(m => m.id === matchId);
+            if (matchIndex !== -1) {
+                tournamentData.matches[matchIndex].homeScore = homeScore;
+                tournamentData.matches[matchIndex].awayScore = awayScore;
+                tournamentData.matches[matchIndex].status = 'completed';
+
+                // Update the UI
+                renderStandings();
+                renderMatches();
+                populateMatchSelect();
+
+                // Reset form
+                matchSelect.value = '';
+                homeScoreInput.value = 0;
+                awayScoreInput.value = 0;
+
+                alert('Match result updated successfully!');
+            }
+        }
+
+        // Tab functionality
+        function openTab(tabName) {
+            const tabContents = document.getElementsByClassName('tab-content');
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove('active');
+            }
+
+            const tabButtons = document.getElementsByClassName('tab-btn');
+            for (let i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove('active');
+            }
+
+            document.getElementById(tabName).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            renderStandings();
+            renderMatches();
+            populateMatchSelect();
+        });
+    </script>
+</body>
+</html>

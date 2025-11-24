@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Permohonan Keahlian | MTKT</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="application-container">
+        <div class="form-header">
+            <h1><i class="fas fa-edit"></i> Permohonan Keahlian MTKT 2025/2026</h1>
+            <p>Sila isi maklumat yang diperlukan</p>
+        </div>
+        
+        <form id="applicationForm" class="application-form">
+            <div class="form-section">
+                <h2>Maklumat Diri</h2>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="fullName">Nama Penuh</label>
+                        <input type="text" id="fullName" name="fullName" placeholder="SEMUA HURUF BESAR" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="matricNumber">Nombor Matrik</label>
+                        <input type="text" id="matricNumber" name="matricNumber" placeholder="2210122" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Emel Al Fateh</label>
+                        <input type="email" id="email" name="email" placeholder="2210122@alfateh.upnm.edu.my" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Nombor Telefon</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Tanpa (-)" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="room">Nombor Bilik</label>
+                        <input type="text" id="room" name="room" required>
+                    </div>
+                    <div class="form-group" >
+                        <label for="status">Status Pelajar</label>
+                        <select id="status" name="status">
+                            <option value="">Sila Pilih</option>
+                            <option value="Awam">Awam</option>
+                            <option value="PALAPES">PALAPES</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="no" style="display: none;">
+                        <label for="noaskar">Nombor Badan/Tentera</label>
+                        <input type="text" id="noaskar" name="noaskar" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="college">Kolej</label>
+                        <select id="college" name="college" required>
+                            <option value="">Sila Pilih</option>
+                            <option value="Jebat">Jebat</option>
+                            <option value="Srikandi">Srikandi</option>
+                            <option value="Tuah">Tuah</option>
+                            <option value="Kasturi">Kasturi</option>
+                            <option value="Lembah">Lembah</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h2>Maklumat Akademik</h2>
+		<div class="form-grid">
+                    <div class="form-group">
+                        <label for="faculty">Fakulti</label>
+                        <select id="faculty" name="faculty" required>
+                            <option value="">Sila Pilih</option>
+                            <option value="AKP">AKP</option>
+                            <option value="FSTP">FSTP</option>
+                            <option value="FPPP">FPPP</option>
+                            <option value="PB">PB</option>
+                            <option value="APPI">APPI</option>
+                            <option value="FKJ">FKJ</option>
+                            <option value="Pusat Asasi">Pusat Asasi 2024/2025</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="yearGroup" style="display: none;">
+                        <label for="year">Tahun</label>
+                        <select id="year" name="year">
+                            <option value="">Sila Pilih</option>
+                            <option value="Tahun 1">Tahun 1</option>
+                            <option value="Tahun 2">Tahun 2</option>
+                            <option value="Tahun 3">Tahun 3</option>
+                            <option value="Tahun 4">Tahun 4</option>
+                            <option value="Tahun 5">Tahun 5</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="course">Jurusan</label>
+                        <input type="text" id="course" name="course" placeholder="Asasi Perubatan" required>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h2>Soalan Tambahan</h2>
+                <div class="form-group">
+                    <label for="reason">Mengapakah anda memilih untuk menyertai Majlis Tertinggi Kolej Tuah?</label>
+                    <textarea id="reason" name="reason" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="strengthsWeaknesses">Apakah kelebihan yang boleh disumbangkan dan kekurangan diri anda?</label>
+                    <textarea id="strengthsWeaknesses" name="strengthsWeaknesses" rows="4" required></textarea>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <div class="checkbox-group">
+                    <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
+                    <label for="agreeTerms">Saya akan memberikan komitmen yang sepenuhnya jika terpilih dan tertakluk bawah Perlembagaan Badan Pelajar ini.</label>
+                </div>
+            </div>
+            
+            <!--<div class="form-actions">
+                <button type="submit" class="submit-button">Hantar Permohonan</button>
+            </div>-->
+        </form>
+    </div>
+
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Permohonan Telah Berjaya Dihantar!</h2>
+            <p>Terima kasih atas permohonan anda. Kami akan menilai permohonan ini dan maklumat lanjut bakal menyusul.</p>
+            <button id="closeModal" class="modal-button">Tutup</button>
+        </div>
+    </div>
+<script>
+    // Show noaskar field based on status selection
+    document.getElementById('status').addEventListener('change', function() {
+        const noGroup = document.getElementById('no');
+        if (this.value == '' || this.value == 'Awam') {
+            noGroup.style.display = 'none';
+            document.getElementById('noaskar').required = false;
+        } else {
+            noGroup.style.display = 'block';
+            document.getElementById('noaskar').required = true;
+        }
+    });
+
+    // Show year field only if faculty is not Pusat Asasi
+    document.getElementById('faculty').addEventListener('change', function() {
+        const yearGroup = document.getElementById('yearGroup');
+        if (this.value == '' || this.value == 'Pusat Asasi') {
+            yearGroup.style.display = 'none';
+            document.getElementById('year').required = false;
+        } else {
+            yearGroup.style.display = 'block';
+            document.getElementById('year').required = true;
+        }
+    });
+
+    // Form submission to Google Sheets
+    document.getElementById('applicationForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const submitBtn = document.querySelector('.submit-button');
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Menghantar...';
+    
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyi5pfpNfTozahwJXl1VB0pn2EWFid4sWdlU77rlfKA2R4IBxTS1aDY5zn0IVr-XhUx/exec';
+    const formData = new FormData(this);
+    
+    const data = {};
+    formData.forEach((value, key) => {
+        data[key] = value;
+    });
+    
+    fetch(scriptURL, {
+        method: 'POST',
+        mode: 'no-cors', // Important for local testing
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(() => {
+        // With no-cors mode, we can't read the response
+        document.getElementById('successModal').style.display = 'flex';
+        document.getElementById('applicationForm').reset();
+        document.getElementById('yearGroup').style.display = 'none';
+        document.getElementById('no').style.display = 'none';
+    })
+    .catch(error => {
+        console.error('Error!', error);
+        alert("Ralat semasa menghantar permohonan. Sila cuba lagi.");
+    })
+    .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Hantar Permohonan';
+    });
+});
+
+    // Close modal
+    document.getElementById('closeModal').addEventListener('click', function() {
+        document.getElementById('successModal').style.display = 'none';
+    });
+</script>
+</body>
+</html>
+

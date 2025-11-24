@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>MTKT | Arkib</title>
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary: #cc0000;
+            --primary-dark: #a30000;
+            --primary-light: #ff3333;
+            --secondary: #1a1a1a;
+            --accent: #f8f9fa;
+            --text: #333333;
+            --text-light: #767268;
+            --white: #ffffff;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --border-radius: 8px;
+            --max-width: 1200px;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--accent);
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-logo img {
+            height: 40px;
+        }
+
+        .nav-logo-text {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 80px;
+            min-height: calc(100vh - 200px);
+            padding: 2rem 0;
+        }
+
+        .archive-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .archive-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .archive-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .archive-container {
+            display: grid;
+            gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .archive-item {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-left: 4px solid var(--primary);
+        }
+
+        .archive-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .archive-item h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text);
+            line-height: 1.4;
+        }
+
+        .archive-item .btn {
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo span {
+            color: var(--primary);
+        }
+
+        .footer-links h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .footer-links ul li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--primary);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 2rem;
+                gap: 1.5rem;
+                transition: var(--transition);
+                box-shadow: var(--shadow);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-link {
+                font-size: 1.1rem;
+                padding: 0.5rem 0;
+            }
+
+            .main-content {
+                margin-top: 70px;
+                padding: 1rem 0;
+            }
+
+            .archive-title {
+                font-size: 2rem;
+            }
+
+            .archive-item {
+                padding: 1.25rem;
+            }
+
+            .archive-item h3 {
+                font-size: 1rem;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .nav-container {
+                padding: 0.75rem 1rem;
+            }
+
+            .nav-logo img {
+                height: 35px;
+            }
+
+            .nav-logo-text {
+                font-size: 1.1rem;
+            }
+
+            .archive-title {
+                font-size: 1.75rem;
+            }
+
+            .archive-item {
+                padding: 1rem;
+            }
+
+            .btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+
+            .footer {
+                padding: 2rem 0 1rem;
+            }
+        }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/LOGO.png" alt="MTKT Logo">
+                <span class="nav-logo-text">MTK<span>Tuah</span></span>
+            </a>
+            
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="ri-menu-line"></i>
+            </div>
+            
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html" class="nav-link">Utama</a></li>
+                <li><a href="2korporat.html" class="nav-link">Korporat</a></li>
+                <li><a href="#directory" class="nav-link">Direktori</a></li>
+                <li><a href="#contact" class="nav-link">HELLO</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="archive-header">
+                <h1 class="archive-title">Arkib Aktiviti</h1>
+                <p class="archive-subtitle">Rekod dan dokumentasi semua aktiviti dan program yang telah dijalankan oleh MTKT</p>
+            </div>
+
+            <div class="archive-container">
+                <div class="archive-item">
+                    <h3>27 Okt. - Serbuan Penguatkuasaan Peraturan Kolej Fasa 1</h3>
+                    <a href="laporan/A9/A9.html">
+                        <button class="btn">Lihat lagi...</button>
+                    </a>
+                </div>
+                    
+                <div class="archive-item">
+                    <h3>25 Okt. - Boot Camp MTKT Day 2</h3>
+                    <a href="laporan/A8/A8.html">
+                        <button class="btn">Lihat lagi...</button>
+                    </a>
+                </div>
+                    
+                <div class="archive-item">
+                    <h3>24 Okt. - Boot Camp MTKT Day 1</h3>
+                    <a href="laporan/A7/A7.html">
+                        <button class="btn">Lihat lagi...</button>
+                    </a>
+                </div>
+                    
+                <div class="archive-item">
+                    <h3>23 Okt. - Kunjung Hormat ke Pusat Pengurusan Kediaman Pelajar</h3>
+                    <a href="laporan/A6/A6.html">
+                        <button class="btn">Lihat lagi...</button>
+                    </a>
+                </div>
+                    
+                <div class="archive-item">
+                    <h3>20 Okt. - Pendaftaran Bowl & Bond</h3>
+                    <a href="https://forms.office.com/r/8RWYUG9PAB">
+                        <button class="btn">Lihat lagi...</button>
+                    </a>
+                </div>
+                    
+                <div class="archive-item">
+                    <h3>15 Okt. - Tinjauan awal Gerobok Rezeki</h3>
+                    <a href="https://forms.cloud.microsoft/r/AhufGbbCJG">
+                        <button class="btn">Lihat lagi...</button>
+                    </a>
+                </div>
+                    
+                <div class="archive-item">
+                    <h3>13 Okt. - Annual Grand Meeting MTKT 2025/2026</h3>
+                    <a href="laporan/A5/A5.html">
+                        <button class="btn">Baca berita...</button>
+                    </a>
+                </div>
+                    
+                <div class="archive-item">
+                    <h3>Semakan Keputusan Permohonan Pengambilan Ahli MTKT 2025/2026</h3>
+                    <a href="laporan/Intake/SemakKeputusan.html">
+                        <button class="btn">Semak di sini...</button>
+                    </a>
+                </div>
+
+                <div class="archive-item">
+                    <h3>Temuduga Pengambilan Ahli MTKT 2025/2026</h3>
+                    <a href="laporan/A4/A4.html">
+                        <button class="btn">Baca berita...</button>
+                    </a>
+                </div>
+
+                <div class="archive-item">
+                    <h3>Permohonan Pengambilan Ahli MTKT 2025/2026</h3>
+                    <a href="laporan/Intake/6newIntakeHome.html">
+                        <button class="btn">Telah Ditutup</button>
+                    </a>
+                </div>
+
+                <div class="archive-item">
+                    <h3>Kejohanan Bola Sepak Super Star 2025</h3>
+                    <a href="laporan/SuperStar/8superStar.html">
+                        <button class="btn">Lihat di sini...</button>
+                    </a>
+                </div>
+
+                <div class="archive-item">
+                    <h3>1. Mesyuarat MTKT 1.0 - 4 Nov 2024</h3>
+                    <a href="laporan/Aktiviti1/Aktiviti1.html">
+                        <button class="btn">Baca berita...</button>
+                    </a>
+                </div>
+
+                <div class="archive-item">
+                    <h3>2. Temuduga MTKT - 12 dan 13 Nov 2024</h3>
+                    <a href="laporan/Aktiviti2/Aktiviti2.html">
+                        <button class="btn">Baca berita...</button>
+                    </a>
+                </div>
+
+                <div class="archive-item">
+                    <h3>3. Mesyuarat MTKT Bil.2/2024 - 19 Nov 24</h3>
+                    <a href="laporan/Aktiviti3/Aktiviti3.html">
+                        <button class="btn">Baca berita...</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <div class="footer-logo">MTK<span>Tuah</span></div>
+                    <p>Majlis Tertinggi Kolej Tuah (MTKT) - Membangunkan komuniti pelajar yang cemerlang dan bersatu padu.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <div class="footer-links">
+                        <h3>Pautan Pantas</h3>
+                        <ul>
+                            <li><a href="index.html">Utama</a></li>
+                            <li><a href="2korporat.html">Korporat</a></li>
+                            <li><a href="index.html#directory">Direktori</a></li>
+                            <li><a href="index.html#contact">HELLO</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <div class="footer-links">
+                        <h3>Hubungi Kami</h3>
+                        <ul>
+                            <li><i class="ri-phone-line"></i> +60 16-5480752</li>
+                            <li><i class="ri-mail-line"></i> kolejtuah@upnm.edu.my</li>
+                            <li><i class="ri-map-pin-line"></i> Kolej Tuah, UPNM</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <div class="footer-links">
+                        <h3>Ikuti Kami</h3>
+                        <div class="footer-social">
+                            <a href="https://www.instagram.com/kolej_tuah" class="social-icon" target="_blank">
+                                <i class="ri-instagram-fill"></i>
+                            </a>
+                            <a href="https://www.tiktok.com/@mtkt.upnm" class="social-icon" target="_blank">
+                                <i class="ri-tiktok-fill"></i>
+                            </a>
+                            <a href="https://wa.me/60165480752" class="social-icon" target="_blank">
+                                <i class="ri-whatsapp-fill"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>Copyright © 2025 Majlis Tertinggi Kolej Tuah. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const navToggle = document.getElementById('nav-toggle');
+        const navLinks = document.getElementById('nav-links');
+
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+  </body>
+</html>

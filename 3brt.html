@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTKT - Bilik Rekreasi Tuah</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link rel="shortcut icon" href="LogoMTKT.png" type="image/x-icon">
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary: #cc0000;
+            --primary-dark: #a30000;
+            --primary-light: #ff3333;
+            --secondary: #1a1a1a;
+            --accent: #f8f9fa;
+            --text: #333333;
+            --text-light: #767268;
+            --white: #ffffff;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --border-radius: 12px;
+            --max-width: 1200px;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Header */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            padding: 4rem 0 3rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Calendar Section */
+        .calendar-section {
+            padding: 2rem 0;
+        }
+
+        .calendar-container {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            margin-bottom: 3rem;
+        }
+
+        .calendar-frame {
+            width: 100%;
+            height: 600px;
+            border: none;
+            display: block;
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 2rem 0 4rem 0;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        /* Poster Section */
+        .poster-container {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .poster-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .poster-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: var(--border-radius);
+        }
+
+        /* Info Section */
+        .info-container {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 2.5rem;
+            transition: var(--transition);
+        }
+
+        .info-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .info-container h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .info-container h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .info-container p {
+            margin-bottom: 1rem;
+            color: var(--text);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .info-container p:first-of-type {
+            font-weight: 600;
+            color: var(--primary);
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-container p:last-of-type {
+            font-weight: 600;
+            color: var(--primary-dark);
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 1.1rem;
+        }
+
+        /* Rules List */
+        .rules-list {
+            margin: 2rem 0;
+        }
+
+        .rule-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: rgba(204, 0, 0, 0.05);
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--primary);
+        }
+
+        .rule-number {
+            background: var(--primary);
+            color: var(--white);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .rule-text {
+            flex: 1;
+            color: var(--text);
+        }
+
+        /* Button */
+        .booking-btn {
+            display: inline-block;
+            width: 100%;
+            padding: 1.2rem 2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-align: center;
+            transition: var(--transition);
+            margin-top: 2rem;
+            box-shadow: 0 4px 15px rgba(204, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .booking-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(204, 0, 0, 0.4);
+            color: var(--white);
+        }
+
+        .booking-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .booking-btn:hover::before {
+            left: 100%;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .footer-logo span {
+            color: var(--primary);
+        }
+
+        .footer-copyright {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .calendar-frame {
+                height: 500px;
+            }
+            
+            .content-grid {
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 3rem 0 2rem 0;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .calendar-frame {
+                height: 400px;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .info-container {
+                padding: 2rem;
+            }
+            
+            .info-container h2 {
+                font-size: 1.6rem;
+            }
+            
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .page-header {
+                padding: 2.5rem 0 1.5rem 0;
+            }
+            
+            .page-header h1 {
+                font-size: 1.7rem;
+            }
+            
+            .calendar-frame {
+                height: 350px;
+            }
+            
+            .info-container {
+                padding: 1.5rem;
+            }
+            
+            .info-container h2 {
+                font-size: 1.4rem;
+            }
+            
+            .rule-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .rule-number {
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+            }
+            
+            .booking-btn {
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="page-header fade-in">
+        <div class="container">
+            <h1>Tempahan Penggunaan Bilik Rekreasi Tuah (BRT)</h1>
+            <p>Sistem Tempahan Dalam Talian - Kolej Tuah UPNM</p>
+        </div>
+    </header>
+
+    <!-- Calendar Section -->
+    <section class="calendar-section">
+        <div class="container">
+            <div class="calendar-container fade-in">
+                <iframe 
+                    class="calendar-frame"
+                    src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Asia%2FKuala_Lumpur&showPrint=0&showTabs=0&showCalendars=0&showTz=0&showTitle=0&src=bXRrb2xlanR1YWhAZ21haWwuY29t&src=ZW4ubWFsYXlzaWEjaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23039BE5&color=%230B8043" 
+                    frameborder="0" 
+                    scrolling="no">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="content-grid">
+                <!-- Poster Section -->
+                <div class="poster-container fade-in">
+                    <img src="assets/BRTRules.jpg" alt="Peraturan Bilik Rekreasi Tuah" class="poster-img">
+                </div>
+
+                <!-- Information Section -->
+                <div class="info-container fade-in">
+                    <h2>BACA DAN FAHAMI</h2>
+                    <p>HANYA SATU TEMPAHAN UNTUK SATU SLOT</p>
+                    
+                    <div class="rules-list">
+                        <div class="rule-item">
+                            <div class="rule-number">1</div>
+                            <div class="rule-text">Tempahan perlu dibuat satu (1) hari sebelum penggunaan.</div>
+                        </div>
+                        <div class="rule-item">
+                            <div class="rule-number">2</div>
+                            <div class="rule-text">Cut-off tempahan adalah pada jam 9:00 malam setiap hari.</div>
+                        </div>
+                        <div class="rule-item">
+                            <div class="rule-number">3</div>
+                            <div class="rule-text">Selepas membuat tempahan, sekiranya berjaya MTKT akan menghubungi anda melalui emel.</div>
+                        </div>
+                        <div class="rule-item">
+                            <div class="rule-number">4</div>
+                            <div class="rule-text">Jika tiada sebarang maklum balas daripada MTKT, bermakna tempahan tidak diluluskan.</div>
+                        </div>
+                    </div>
+                    
+                    <p>SILA PATUHI ARAHAN PENGGUNAAN BRT</p>
+                    
+                    <a href="https://calendar.app.google/xsUwU66yWzCCXdPH6" class="booking-btn" target="_blank">
+                        <i class="ri-calendar-check-line"></i> KLIK DI SINI UNTUK TEMPAHAN
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-logo">MTK<span>Tuah</span></div>
+                <div class="footer-copyright">
+                    Copyright © 2025 Majlis Tertinggi Kolej Tuah. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Add fade-in animation to elements on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeInOnScroll = function() {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            // Set initial state
+            fadeElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            });
+            
+            // Check on load and scroll
+            fadeInOnScroll();
+            window.addEventListener('scroll', fadeInOnScroll);
+        });
+    </script>
+</body>
+</html>

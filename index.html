@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTKT | Majlis Tertinggi Kolej Tuah</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link rel="shortcut icon" href="assets/LOGO.png" type="image/x-icon">
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary: #cc0000;
+            --primary-dark: #a30000;
+            --primary-light: #ff3333;
+            --secondary: #1a1a1a;
+            --accent: #f8f9fa;
+            --text: #333333;
+            --text-light: #767268;
+            --white: #ffffff;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --border-radius: 8px;
+            --max-width: 1200px;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--accent);
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-logo img {
+            height: 40px;
+        }
+
+        .nav-logo-text {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 8rem;
+            padding-bottom: 5rem;
+            background: linear-gradient(135deg, rgba(204, 0, 0, 0.05) 0%, rgba(255, 255, 255, 1) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(204, 0, 0, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content h1 span {
+            color: var(--primary);
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--secondary);
+            color: var(--white);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /*.hero-image img {
+            max-width: 400px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }*/
+
+		/* Improved Slideshow Section - No Black Spaces */
+		.slideshow {
+			padding: 3rem 0;
+			background-color: var(--white);
+			position: relative;
+			overflow: hidden;
+		}
+
+		.slideshow-container {
+			position: relative;
+			width: 100%;
+			height: 0;
+			padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+			border-radius: 15px;
+			overflow: hidden;
+			box-shadow: var(--shadow);
+			background-color: var(--white); /* Fallback background */
+		}
+
+		.slideshow-container iframe {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			border: none;
+			object-fit: cover; /* Ensures content fills container */
+		}
+
+		/* Alternative approach for exact fit */
+		.slideshow-container-full {
+			width: 100%;
+			height: 70vh; /* Adjust based on your preference */
+			min-height: 400px;
+			max-height: 800px;
+			border-radius: 15px;
+			overflow: hidden;
+			box-shadow: var(--shadow);
+		}
+
+		.slideshow-container-full iframe {
+			width: 100%;
+			height: 100%;
+			border: none;
+			display: block;
+		}
+
+		/* For Google Slides specific optimization */
+		.slideshow-container-google {
+			width: 100%;
+			height: 70vh;
+			min-height: 400px;
+			border-radius: 15px;
+			overflow: hidden;
+			box-shadow: var(--shadow);
+			background: var(--white);
+		}
+
+		.slideshow-container-google iframe {
+			width: 100%;
+			height: 100%;
+			border: none;
+			display: block;
+			background: var(--white);
+		}
+		
+		/* Additional fix for Google Slides embed */
+		.slideshow-container iframe[src*="docs.google.com"] {
+			background: var(--white);
+		}
+
+		/* Ensure no scrollbars or extra spaces */
+		.slideshow-container * {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+        /* Organization Section */
+        .organization {
+            background-color: var(--accent);
+        }
+
+        .org-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .org-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .org-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .org-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .org-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: var(--transition);
+        }
+
+        .org-card:hover .org-image img {
+            transform: scale(1.1);
+        }
+
+        .org-content {
+            padding: 1.5rem;
+        }
+
+        .org-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .org-position {
+            font-size: 1rem;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .org-more {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        /* Directory Section */
+        .directory {
+            background-color: var(--white);
+        }
+
+        .directory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .directory-card {
+            background-color: var(--accent);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .directory-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .directory-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .directory-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .directory-card:hover .directory-image img {
+            transform: scale(1.05);
+        }
+
+        .directory-content {
+            padding: 1.5rem;
+        }
+
+        .directory-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .directory-desc {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--accent);
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            background-color: var(--white);
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(204, 0, 0, 0.1);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo span {
+            color: var(--primary);
+        }
+
+        .footer-links h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .footer-links ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--primary);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-social {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                box-shadow: var(--shadow);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+			
+			.slideshow-container {
+				padding-bottom: 52%; /* 4:3 for mobile */
+			}
+        }
+
+        @media (max-width: 576px) {
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .org-grid,
+            .directory-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form {
+                padding: 1.5rem;
+            }
+			
+			.slideshow-container {
+				padding-bottom: 50%; /* 1:1 for very small screens */
+			}
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/LOGO.png" alt="MTKT Logo">
+                <span class="nav-logo-text">MTK<span>Tuah</span></span>
+            </a>
+            
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="ri-menu-line"></i>
+            </div>
+            
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html" class="nav-link active">Utama</a></li>
+                <li><a href="2korporat.html" class="nav-link">Korporat</a></li>
+                <li><a href="#directory" class="nav-link">Direktori</a></li>
+                <li><a href="#contact" class="nav-link">HELLO</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1>SELAMAT DATANG KE <span>MAJLIS TERTINGGI KOLEJ TUAH</span> (MTKT)</h1>
+                <p>Majlis Tertinggi Kolej Tuah (MTKT) menyelaras aktiviti pelajar, mengeratkan hubungan antara pelajar dan pengurusan, serta mempromosikan kepimpinan, perpaduan, dan kerjasama dalam komuniti Kolej Tuah.</p>
+                
+                <div class="hero-buttons">
+                    <a href="#organization" class="btn">Kenali Kami</a>
+                    <a href="#directory" class="btn btn-outline">Direktori</a>
+                </div>
+                
+                <div class="hero-social">
+                    <a href="https://www.instagram.com/kolej_tuah" class="social-icon" target="_blank">
+                        <i class="ri-instagram-fill"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@mtkt.upnm" class="social-icon" target="_blank">
+                        <i class="ri-tiktok-fill"></i>
+                    </a>
+                    <a href="https://wa.me/60136290527" class="social-icon" target="_blank">
+                        <i class="ri-whatsapp-fill"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <img src="assets/LOGO.png" alt="MTKT Logo">
+            </div>
+        </div>
+    </section>
+
+    <!-- Slideshow Section -->
+    <section class="slideshow">
+        <div class="container">
+            <div class="slideshow-container">
+                <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQGGbfxKrO-XhV4LfIX2Qrny_-wgtiz8gFA5aNEyIWwUvs52feYsMRuwHnaCu1grIWQF-wgvXRC0FnC/embed?start=true&loop=true&delayms=2700&rm=minimal">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Organization Section -->
+    <section class="section organization" id="organization">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Carta Organisasi 2025/26</h2>
+                <p class="section-subtitle">Kepimpinan yang berdedikasi untuk membangunkan komuniti Kolej Tuah</p>
+            </div>
+            
+            <div class="org-grid">
+                <div class="org-card">
+                    <div class="org-image">
+                        <img src="assets/16.png" alt="Penasihat MTKT">
+                    </div>
+                    <div class="org-content">
+                        <h3 class="org-name">En. Muhammad Hazman</h3>
+                        <p class="org-position">Penasihat MTKT</p>
+                    </div>
+                </div>
+                
+                <div class="org-card">
+                    <div class="org-image">
+                        <img src="assets/1.png" alt="Presiden">
+                    </div>
+                    <div class="org-content">
+                        <h3 class="org-name">Muhammad Taufiq</h3>
+                        <p class="org-position">Presiden</p>
+                    </div>
+                </div>
+                
+                <div class="org-card">
+                    <div class="org-image">
+                        <img src="assets/2.png" alt="Timbalan Presiden">
+                    </div>
+                    <div class="org-content">
+                        <h3 class="org-name">Muhammad Najmi</h3>
+                        <p class="org-position">Timbalan Presiden</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="org-more">
+                <a href="2korporat.html" class="btn">Lihat Keseluruhan Pasukan</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Directory Section -->
+    <section class="section directory" id="directory">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Direktori MTKT</h2>
+                <p class="section-subtitle">Dapatkan maklumat lanjut berkaitan kami melalui pautan-pautan di bawah</p>
+            </div>
+            
+            <div class="directory-grid">
+                <div class="directory-card">
+                    <div class="directory-image">
+                        <img src="assets/BRT.png" alt="Bilik Rekreasi Tuah">
+                    </div>
+                    <div class="directory-content">
+                        <h3 class="directory-title">Tempahan Bilik Rekreasi Tuah</h3>
+                        <p class="directory-desc">Membolehkan pelajar dan staf Kolej Tuah untuk membuat tempahan bagi menggunakan kemudahan bilik rekreasi bagi tujuan riadah dan aktiviti sosial.</p>
+                        <a href="3brt.html" class="btn">Lihat Lagi</a>
+                    </div>
+                </div>
+                
+                <div class="directory-card">
+                    <div class="directory-image">
+                        <img src="assets/FELO.png" alt="Felo Bertugas">
+                    </div>
+                    <div class="directory-content">
+                        <h3 class="directory-title">Felo Bertugas</h3>
+                        <p class="directory-desc">Merupakan individu yang diberi tanggungjawab untuk memastikan kelancaran dan keselamatan aktiviti harian di Kolej Tuah.</p>
+                        <a href="4felo.html" class="btn">Lihat Lagi</a>
+                    </div>
+                </div>
+                
+                <div class="directory-card">
+                    <div class="directory-image">
+                        <img src="assets/TAKWIM.png" alt="Takwim Program">
+                    </div>
+                    <div class="directory-content">
+                        <h3 class="directory-title">Takwim Program</h3>
+                        <p class="directory-desc">Menyediakan jadual dan maklumat terkini tentang semua acara, aktiviti, dan program yang dianjurkan oleh MTKT.</p>
+                        <a href="5takwim.html" class="btn">Lihat Lagi</a>
+                    </div>
+                </div>
+                
+                <div class="directory-card">
+                    <div class="directory-image">
+                        <img src="assets/ARKIB.png" alt="Berita/Arkib MTKT">
+                    </div>
+                    <div class="directory-content">
+                        <h3 class="directory-title">Berita/Arkib MTKT</h3>
+                        <p class="directory-desc">Berita/Arkib MTKT memaparkan informasi terkini dan rekod penting mengenai aktiviti, program, serta inisiatif yang dijalankan.</p>
+                        <a href="6arkib.html" class="btn">Lihat Lagi</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Hubungi Kami!</h2>
+                <p class="section-subtitle">Sebarang aduan/pertanyaan boleh diajukan melalui borang di bawah</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-form">
+                    <form id="reportForm">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Nama:</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone" class="form-label">No. Telefon:</label>
+                            <input type="tel" id="phone" name="phone" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="matrix" class="form-label">No. Matrik:</label>
+                            <input type="text" id="matrix" name="matrix" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="date" class="form-label">Tarikh Aduan/Pertanyaan:</label>
+                            <input type="date" id="date" name="date" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="description" class="form-label">Penerangan Aduan/Pertanyaan:</label>
+                            <textarea id="description" name="description" class="form-control" rows="4" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn" style="width: 100%;">Hantar Laporan</button>
+                    </form>
+                    <p id="responseMessage" style="display:none; color:green; text-align: center; margin-top: 1rem;">Laporan Telah Diterima</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <div class="footer-logo">MTK<span>Tuah</span></div>
+                    <p>Majlis Tertinggi Kolej Tuah (MTKT) - Membangunkan komuniti pelajar yang cemerlang dan bersatu padu.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <div class="footer-links">
+                        <h3>Pautan Pantas</h3>
+                        <ul>
+                            <li><a href="index.html">Utama</a></li>
+                            <li><a href="2korport.html">Korporat</a></li>
+                            <li><a href="#directory">Direktori</a></li>
+                            <li><a href="#contact">HELLO</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <div class="footer-links">
+                        <h3>Hubungi Kami</h3>
+                        <ul>
+                            <li><i class="ri-phone-line"></i> +60 16-5480752</li>
+                            <li><i class="ri-mail-line"></i> kolejtuah@upnm.edu.my</li>
+                            <li><i class="ri-map-pin-line"></i> Kolej Tuah, UPNM</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <div class="footer-links">
+                        <h3>Ikuti Kami</h3>
+                        <div class="footer-social">
+                            <a href="https://www.instagram.com/kolej_tuah" class="social-icon" target="_blank">
+                                <i class="ri-instagram-fill"></i>
+                            </a>
+                            <a href="https://www.tiktok.com/@mtkt.upnm" class="social-icon" target="_blank">
+                                <i class="ri-tiktok-fill"></i>
+                            </a>
+                            <a href="https://wa.me/60165480752" class="social-icon" target="_blank">
+                                <i class="ri-whatsapp-fill"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>Copyright © 2025 Majlis Tertinggi Kolej Tuah. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation Toggle
+        const navToggle = document.getElementById('nav-toggle');
+        const navLinks = document.getElementById('nav-links');
+        
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            navToggle.querySelector('i').classList.toggle('ri-menu-line');
+            navToggle.querySelector('i').classList.toggle('ri-close-line');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                navToggle.querySelector('i').classList.add('ri-menu-line');
+                navToggle.querySelector('i').classList.remove('ri-close-line');
+            });
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Form submission
+        document.getElementById("reportForm").addEventListener("submit", function(event){
+            event.preventDefault();
+            
+            const form = event.target;
+            const formData = new FormData(form);
+            
+            submitForm(formData);
+        });
+        
+        function submitForm(formData) {
+            fetch("https://script.google.com/macros/s/AKfycbxs1EaxXejz-HFyQMhG5RYcNLmbkJBzrZaIE1HshoeaD0lX3rKg2JFyi6K3NPJp0YpOwA/exec", {
+                method: "POST",
+                body: new URLSearchParams(formData)
+            })
+            .then(response => response.text())
+            .then(data => {
+                if (data === "Success") {
+                    document.getElementById("responseMessage").style.display = "block";
+                    document.getElementById("reportForm").reset();
+                    
+                    // Hide message after 5 seconds
+                    setTimeout(() => {
+                        document.getElementById("responseMessage").style.display = "none";
+                    }, 5000);
+                } else {
+                    alert("Failed to submit. Please try again.");
+                }
+            })
+            .catch(error => console.error("Error:", error));
+        }
+    </script>
+</body>
+</html>

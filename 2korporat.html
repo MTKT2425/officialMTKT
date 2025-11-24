@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="styles2.css">
+    <title>Korporat MTKT | Majlis Tertinggi Kolej Tuah</title>
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary: #cc0000;
+            --primary-dark: #a30000;
+            --primary-light: #ff3333;
+            --secondary: #1a1a1a;
+            --accent: #f8f9fa;
+            --text: #333333;
+            --text-light: #767268;
+            --white: #ffffff;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --border-radius: 8px;
+            --max-width: 1200px;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--accent);
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-logo img {
+            height: 40px;
+        }
+
+        .nav-logo-text {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Organization Section */
+        .organization {
+            background-color: var(--accent);
+            padding: 8rem 0 5rem 0;
+            min-height: 100vh;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Organization Grid */
+        .org-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .org-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .org-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Improved Image Container - No Crop */
+        .org-image {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .org-image img {
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 240px;
+            object-fit: contain;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .org-card:hover .org-image img {
+            transform: scale(1.05);
+        }
+
+        /* Elegant Content Styling */
+        .org-content {
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .org-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            border-radius: 2px;
+        }
+
+        .org-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .org-position {
+            font-size: 0.95rem;
+            color: var(--primary);
+            font-weight: 600;
+            background: rgba(204, 0, 0, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+
+        /* Special styling for advisor */
+        .org-card:nth-child(1) .org-position {
+            background: rgba(0, 123, 255, 0.1);
+            color: #007bff;
+        }
+
+        /* Optional: Add decorative elements */
+        .org-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .org-card:hover::after {
+            opacity: 1;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo span {
+            color: var(--primary);
+        }
+
+        .footer-links h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .footer-links ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--primary);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Social Icons */
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--secondary);
+            color: var(--white);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .org-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                box-shadow: var(--shadow);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .organization {
+                padding: 7rem 0 3rem 0;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .org-grid {
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            .org-image {
+                height: 240px;
+                padding: 1rem;
+            }
+            
+            .org-image img {
+                max-height: 200px;
+            }
+            
+            .org-content {
+                padding: 1.25rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .organization {
+                padding: 6rem 0 2rem 0;
+            }
+            
+            .org-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .org-image {
+                height: 220px;
+            }
+            
+            .org-image img {
+                max-height: 180px;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .org-name {
+                font-size: 1.1rem;
+            }
+            
+            .org-position {
+                font-size: 0.9rem;
+                padding: 0.4rem 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .org-image {
+                height: 200px;
+            }
+            
+            .org-image img {
+                max-height: 160px;
+            }
+            
+            .org-content {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/LOGO.png" alt="MTKT Logo">
+                <span class="nav-logo-text">MTK<span>Tuah</span></span>
+            </a>
+            
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="ri-menu-line"></i>
+            </div>
+            
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html" class="nav-link">Utama</a></li>
+                <li><a href="2korporat.html" class="nav-link active">Korporat</a></li>
+                <li><a href="index.html#directory" class="nav-link">Direktori</a></li>
+                <li><a href="#contact" class="nav-link">HELLO</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Organization Section -->
+    <section class="organization" id="organization">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Carta Organisasi 2025/26</h2>
+                <p class="section-subtitle">Kepimpinan yang berdedikasi untuk membangunkan komuniti Kolej Tuah</p>
+            </div>
+            
+            <div class="org-grid">
+                <!-- Penasihat -->
+                <div class="org-card">
+                    <div class="org-image">
+                        <img src="assets/16.png" alt="Penasihat MTKT">
+                    </div>
+                    <div class="org-content">
+                        <h3 class="org-name">En. Muhammad Hazman</h3>
+                        <p class="org-position">Penasihat MTKT</p>
+                    </div>
+                </div>
+
+                <!-- Presiden -->
+                <div class="org-card">
+                    <div class="org-image">
+                        <img src="assets/1.png" alt="Presiden">
+                    </div>
+                    <div class="org-content">
+                        <h3 class="org-name">Muhammad Taufiq</h3>
+                        <p class="org-position">Presiden</p>
+                    </div>
+                </div>
+
+                <!-- Timbalan Presiden -->
+                <div class="org-card">
+                    <div class="org-image">
+                        <img src="assets/2.png" alt="Timbalan Presiden">
+                    </div>
+                    <div class="org-content">
+                        <h3 class="org-name">Muhammad Najmi</h3>
+                        <p class="org-position">Timbalan Presiden</p>
+                    </div>
+                </div>
+
+                <!-- Setiausaha Agung -->
+                <div class="org-card">
+                    <div class="org-image">
+                        <img src="assets/3.png" alt="Setiausaha Agung">
+                    </div>
+                    <div class="org-content">
+                        <h3 class="org-name">Muhammad Darwisy</h3>
+                        <p class="org-position">Setiausaha Agung</p>
+                    </div>
+                </div>
+
+                <!-- Timbalan Setiausaha Agung -->
+                <div class="org-card">
+                    <div class="org-image">
+                        <img src="assets/8.png" alt="Timbalan Setiausaha Agung">
+                    </div>
+                    <div class="org-content">
+                        <h3 class="org-name">Chen Yong Jie</h3>
+                        <p class="org-position">Timb. Setiausaha Agung</p>
+                    </div>
+                </div>
+
+                <!-- Bendahari Kehormat -->
+                <div class="org-card">
+                    <div class="org-image">
+                        <img src="assets/5.png" alt="Bendahari Kehormat">
+                    </div>
+                    <div class="org-content">
+                        <h3 class="org-name">Muhammad Hidayat</h3>
+                        <p class="org-position">Bendahari Kehormat</p>
+                    </div>
+                </div>
+
+                <!-- Exco Multimedia Publisiti 1 -->
+                <div class="org-card">
+                    <div class="org-image">
+                        <img src="assets/6.png" alt="Exco Multimedia Publisiti">
+                    </div>
+                    <div class="org-content">
+                        <h3 class="org-name">Muhammad Faqrul Faiz</h3>
+                        <p class="org-position">Exco Multimedia Publisiti</p>
+                    </div>
+                </div>
+
+                <!-- Exco Multimedia Publisiti 2 -->
+                <div class="org-card">
+                    <div class="org-image">
+                        <img src="assets/7.png" alt="Exco Multimedia Publisiti">
+                    </div>
+                    <div class="org-content">
+                        <h3 class="org-name">Kaathir</h3>
+                        <p class="org-position">Exco Multimedia Publisiti</p>
+                    </div>
+                </div>
+				
+				<!-- Exco Multimedia Publisiti 3 -->
+                <div class="org-card">
+                    <div class="org-image">
+                        <img src="assets/10.png" alt="Exco Kebajikan Kerohanian">
+                    </div>
+                    <div class="org-content">
+                        <h3 class="org-name">Muhammad Harith Akif</h3>
+                        <p class="org-position">Exco Multimedia Publisiti</p>
+                    </div>
+                </div>
+
+                <!-- Exco Akademik Kepimpinan -->
+                <div class="org-card">
+                    <div class="org-image">
+                        <img src="assets/4.png" alt="Exco Akademik Kepimpinan">
+                    </div>
+                    <div class="org-content">
+                        <h3 class="org-name">Muhammad Amirul Hafis</h3>
+                        <p class="org-position">Exco Akademik Kepimpinan</p>
+                    </div>
+                </div>
+
+                <!-- Exco Keselamatan Kesihatan -->
+                <div class="org-card">
+                    <div class="org-image">
+                        <img src="assets/9.png" alt="Exco Keselamatan Kesihatan">
+                    </div>
+                    <div class="org-content">
+                        <h3 class="org-name">Muhammad Amirullah</h3>
+                        <p class="org-position">Exco Keselamatan Kesihatan</p>
+                    </div>
+                </div>
+
+                <!-- Exco Kebajikan Kerohanian 2 -->
+                <div class="org-card">
+                    <div class="org-image">
+                        <img src="assets/12.png" alt="Exco Kebajikan Kerohanian">
+                    </div>
+                    <div class="org-content">
+                        <h3 class="org-name">Muhammad Danish Aibaq</h3>
+                        <p class="org-position">Exco Kebajikan Kerohanian</p>
+                    </div>
+                </div>
+
+                <!-- Exco Sukan Rekreasi -->
+                <div class="org-card">
+                    <div class="org-image">
+                        <img src="assets/11.png" alt="Exco Sukan Rekreasi">
+                    </div>
+                    <div class="org-content">
+                        <h3 class="org-name">Keshwinaananthan Pillai</h3>
+                        <p class="org-position">Exco Sukan Rekreasi</p>
+                    </div>
+                </div>
+
+                <!-- Exco Pembangunan Insan Kesukarelawanan 1 -->
+                <div class="org-card">
+                    <div class="org-image">
+                        <img src="assets/13.png" alt="Exco Pembangunan Insan Kesukarelawanan">
+                    </div>
+                    <div class="org-content">
+                        <h3 class="org-name">Thivyan</h3>
+                        <p class="org-position">Exco Pembangunan Insan Kesukarelawanan</p>
+                    </div>
+                </div>
+
+                <!-- Exco Pembangunan Insan Kesukarelawanan 2 -->
+                <div class="org-card">
+                    <div class="org-image">
+                        <img src="assets/15.png" alt="Exco Pembangunan Insan Kesukarelawanan">
+                    </div>
+                    <div class="org-content">
+                        <h3 class="org-name">Mohamad Izman</h3>
+                        <p class="org-position">Exco Pembangunan Insan Kesukarelawanan</p>
+                    </div>
+                </div>
+
+                <!-- Exco Kelestarian Alam Sekitar -->
+                <div class="org-card">
+                    <div class="org-image">
+                        <img src="assets/.png" alt="VACANT">
+                    </div>
+                    <div class="org-content">
+                        <h3 class="org-name">VACANT</h3>
+                        <p class="org-position">Exco Kelestarian Alam Sekitar</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <div class="footer-logo">MTK<span>Tuah</span></div>
+                    <p>Majlis Tertinggi Kolej Tuah (MTKT) - Membangunkan komuniti pelajar yang cemerlang dan bersatu padu.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <div class="footer-links">
+                        <h3>Pautan Pantas</h3>
+                        <ul>
+                            <li><a href="index.html">Utama</a></li>
+                            <li><a href="2korporat.html">Korporat</a></li>
+                            <li><a href="index.html#directory">Direktori</a></li>
+                            <li><a href="index.html#contact">HELLO</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <div class="footer-links">
+                        <h3>Hubungi Kami</h3>
+                        <ul>
+                            <li><i class="ri-phone-line"></i> +60 16-5480752</li>
+                            <li><i class="ri-mail-line"></i> kolejtuah@upnm.edu.my</li>
+                            <li><i class="ri-map-pin-line"></i> Kolej Tuah, UPNM</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <div class="footer-links">
+                        <h3>Ikuti Kami</h3>
+                        <div class="footer-social">
+                            <a href="https://www.instagram.com/kolej_tuah" class="social-icon" target="_blank">
+                                <i class="ri-instagram-fill"></i>
+                            </a>
+                            <a href="https://www.tiktok.com/@mtkt.upnm" class="social-icon" target="_blank">
+                                <i class="ri-tiktok-fill"></i>
+                            </a>
+                            <a href="https://wa.me/60165480752" class="social-icon" target="_blank">
+                                <i class="ri-whatsapp-fill"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>Copyright © 2025 Majlis Tertinggi Kolej Tuah. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation Toggle
+        const navToggle = document.getElementById('nav-toggle');
+        const navLinks = document.getElementById('nav-links');
+        
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            navToggle.querySelector('i').classList.toggle('ri-menu-line');
+            navToggle.querySelector('i').classList.toggle('ri-close-line');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                navToggle.querySelector('i').classList.add('ri-menu-line');
+                navToggle.querySelector('i').classList.remove('ri-close-line');
+            });
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Set active nav link
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentPage = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
