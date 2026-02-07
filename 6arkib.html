@@ -11,7 +11,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <title>MTKT | Arkib</title>
+    <title>Arkib Digital | Majlis Tetinggi Kolej Tuah</title>
     <style>
         /* CSS Variables */
         :root {
@@ -209,63 +209,63 @@
         }
 
         /* Main Content */
-        .main-content {
-            margin-top: 80px;
-            min-height: calc(100vh - 200px);
-            padding: 2rem 0;
-        }
-
-        .archive-header {
+        .main-content { margin-top: 125px; padding-bottom: 5rem; }
+        
+        .archive-header { text-align: center; margin-bottom: 2rem; }
+        .archive-title { font-size: 2.5rem; color: var(--primary); margin-bottom: 0.5rem; }
+        
+        .section-divider {
             text-align: center;
-            margin-bottom: 3rem;
+            margin: 4rem 0 2rem;
+            position: relative;
+        }
+        .section-label {
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.6rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            display: inline-block;
+            box-shadow: var(--shadow);
         }
 
-        .archive-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .archive-subtitle {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .archive-container {
-            display: grid;
-            gap: 1.5rem;
+        /* Canva Wrapper (Magazine Ratio) */
+        .canva-embed-card {
             max-width: 800px;
             margin: 0 auto;
-        }
-
-        .archive-item {
             background: var(--white);
-            border-radius: var(--border-radius);
-            padding: 1.5rem;
+            padding: 10px;
+            border-radius: 12px;
             box-shadow: var(--shadow);
-            transition: var(--transition);
-            border-left: 4px solid var(--primary);
         }
 
-        .archive-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        .canva-outer-container {
+            position: relative; 
+            width: 100%; 
+            height: 0; 
+            padding-top: 141.4286%; /* A4 Ratio */
+            overflow: hidden; 
+            border-radius: 8px; 
+            will-change: transform;
+        }
+        
+        .canva-outer-container iframe {
+            position: absolute; 
+            width: 100%; 
+            height: 100%; 
+            top: 0; 
+            left: 0; 
+            border: none;
         }
 
-        .archive-item h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--text);
-            line-height: 1.4;
-        }
-
-        .archive-item .btn {
-            width: 100%;
-            margin-top: 0.5rem;
+        .canva-caption {
+            display: block;
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
         }
 
         /* Footer */
@@ -464,109 +464,40 @@
     <main class="main-content">
         <div class="container">
             <div class="archive-header">
-                <h1 class="archive-title">Arkib Aktiviti</h1>
-                <p class="archive-subtitle">Rekod dan dokumentasi semua aktiviti dan program yang telah dijalankan oleh MTKT</p>
+                <h1 class="archive-title">Arkib Aktiviti Digital</h1>
+                <p>Dokumentasi eksklusif dalam bentuk majalah digital MTKT.</p>
+            </div>
+			
+            <div class="section-divider">
+                <span class="section-label">Hebahan & Promosi</span>
+            </div>
+            <div class="canva-embed-card">
+                <div class="canva-outer-container">
+                    <iframe loading="lazy" src="https://www.canva.com/design/DAG94fXFKFo/Ss_aMux-fn0xDt8uCXk7dA/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
+                </div>
             </div>
 
-            <div class="archive-container">
-                <div class="archive-item">
-                    <h3>27 Okt. - Serbuan Penguatkuasaan Peraturan Kolej Fasa 1</h3>
-                    <a href="laporan/A9/A9.html">
-                        <button class="btn">Lihat lagi...</button>
-                    </a>
+            <div class="section-divider">
+                <span class="section-label">Laporan Gerak Kerja & Penglibatan</span>
+            </div>
+            <div class="canva-embed-card">
+                <div class="canva-outer-container">
+                    <iframe loading="lazy" src="https://www.canva.com/design/DAG94fXFKFo/Ss_aMux-fn0xDt8uCXk7dA/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
                 </div>
-                    
-                <div class="archive-item">
-                    <h3>25 Okt. - Boot Camp MTKT Day 2</h3>
-                    <a href="laporan/A8/A8.html">
-                        <button class="btn">Lihat lagi...</button>
-                    </a>
-                </div>
-                    
-                <div class="archive-item">
-                    <h3>24 Okt. - Boot Camp MTKT Day 1</h3>
-                    <a href="laporan/A7/A7.html">
-                        <button class="btn">Lihat lagi...</button>
-                    </a>
-                </div>
-                    
-                <div class="archive-item">
-                    <h3>23 Okt. - Kunjung Hormat ke Pusat Pengurusan Kediaman Pelajar</h3>
-                    <a href="laporan/A6/A6.html">
-                        <button class="btn">Lihat lagi...</button>
-                    </a>
-                </div>
-                    
-                <div class="archive-item">
-                    <h3>20 Okt. - Pendaftaran Bowl & Bond</h3>
-                    <a href="https://forms.office.com/r/8RWYUG9PAB">
-                        <button class="btn">Lihat lagi...</button>
-                    </a>
-                </div>
-                    
-                <div class="archive-item">
-                    <h3>15 Okt. - Tinjauan awal Gerobok Rezeki</h3>
-                    <a href="https://forms.cloud.microsoft/r/AhufGbbCJG">
-                        <button class="btn">Lihat lagi...</button>
-                    </a>
-                </div>
-                    
-                <div class="archive-item">
-                    <h3>13 Okt. - Annual Grand Meeting MTKT 2025/2026</h3>
-                    <a href="laporan/A5/A5.html">
-                        <button class="btn">Baca berita...</button>
-                    </a>
-                </div>
-                    
-                <div class="archive-item">
-                    <h3>Semakan Keputusan Permohonan Pengambilan Ahli MTKT 2025/2026</h3>
-                    <a href="laporan/Intake/SemakKeputusan.html">
-                        <button class="btn">Semak di sini...</button>
-                    </a>
-                </div>
+                <a class="canva-caption" href="https://www.canva.com/design/DAG94fXFKFo/Ss_aMux-fn0xDt8uCXk7dA/view" target="_blank">Buka Majalah Penuh (Canva)</a>
+            </div>
 
-                <div class="archive-item">
-                    <h3>Temuduga Pengambilan Ahli MTKT 2025/2026</h3>
-                    <a href="laporan/A4/A4.html">
-                        <button class="btn">Baca berita...</button>
-                    </a>
-                </div>
 
-                <div class="archive-item">
-                    <h3>Permohonan Pengambilan Ahli MTKT 2025/2026</h3>
-                    <a href="laporan/Intake/6newIntakeHome.html">
-                        <button class="btn">Telah Ditutup</button>
-                    </a>
-                </div>
 
-                <div class="archive-item">
-                    <h3>Kejohanan Bola Sepak Super Star 2025</h3>
-                    <a href="laporan/SuperStar/8superStar.html">
-                        <button class="btn">Lihat di sini...</button>
-                    </a>
-                </div>
-
-                <div class="archive-item">
-                    <h3>1. Mesyuarat MTKT 1.0 - 4 Nov 2024</h3>
-                    <a href="laporan/Aktiviti1/Aktiviti1.html">
-                        <button class="btn">Baca berita...</button>
-                    </a>
-                </div>
-
-                <div class="archive-item">
-                    <h3>2. Temuduga MTKT - 12 dan 13 Nov 2024</h3>
-                    <a href="laporan/Aktiviti2/Aktiviti2.html">
-                        <button class="btn">Baca berita...</button>
-                    </a>
-                </div>
-
-                <div class="archive-item">
-                    <h3>3. Mesyuarat MTKT Bil.2/2024 - 19 Nov 24</h3>
-                    <a href="laporan/Aktiviti3/Aktiviti3.html">
-                        <button class="btn">Baca berita...</button>
-                    </a>
+            <div class="section-divider">
+                <span class="section-label">Galeri Program</span>
+            </div>
+            <div class="canva-embed-card">
+                <div class="canva-outer-container">
+                    <iframe loading="lazy" src="https://www.canva.com/design/DAG94fXFKFo/Ss_aMux-fn0xDt8uCXk7dA/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
                 </div>
             </div>
+
         </div>
     </main>
 
