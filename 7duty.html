@@ -204,18 +204,9 @@
             cursor: pointer;
         }
 
-        /* Organization Section */
-        .organization {
-            background-color: var(--accent);
-            padding: 8rem 0 5rem 0;
-            min-height: 100vh;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
+        /* Duty Section */
+        .duty { padding: 8rem 0 5rem 0; min-height: 100vh; }
+        .roster-header { text-align: center; margin-bottom: 3rem; }
         .section-title {
             font-size: 2.5rem;
             font-weight: 700;
@@ -224,7 +215,6 @@
             position: relative;
             display: inline-block;
         }
-
         .section-title::after {
             content: '';
             position: absolute;
@@ -236,7 +226,6 @@
             background-color: var(--primary);
             border-radius: 2px;
         }
-
         .section-subtitle {
             font-size: 1.1rem;
             color: var(--text-light);
@@ -244,49 +233,39 @@
             margin: 0 auto;
         }
 
-		/* Table Design */
-		.duty {
-            background-color: var(--accent);
-            padding: 8rem 0 5rem 0;
-            min-height: 100vh;
+        /* Table Design */
+        .roster-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            margin-bottom: 2rem;
         }
-		.section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--primary);
-            border-radius: 2px;
-        }
-
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        .roster-header { text-align: center; margin-bottom: 3rem; }
-        .roster-card { background: var(--white); border-radius: var(--border-radius); box-shadow: var(--shadow); overflow: hidden; margin-bottom: 2rem; }
         .table-responsive { overflow-x: auto; }
-        table { width: 100%; border-collapse: collapse; min-width: 800px; }
-        th { background: var(--primary); color: var(--white); padding: 1.2rem; text-align: left; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
-        td { padding: 1rem; border-bottom: 1px solid #eee; font-size: 0.9rem; transition: var(--transition); }
+        table { width: 100%; border-collapse: collapse; min-width: 900px; }
+        th {
+            background: var(--primary);
+            color: var(--white);
+            padding: 1.2rem;
+            text-align: left;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+        td { padding: 1rem; border-bottom: 1px solid #eee; font-size: 0.9rem; transition: var(--transition); vertical-align: middle; }
         tr:hover td { background-color: #fffafb; }
-		.upload-btn { background: var(--secondary); color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; font-size: 0.75rem; font-weight: 500; }
-        .upload-btn:hover { background: var(--primary); }
-        .sync-status { font-size: 0.7rem; color: #27ae60; font-weight: 600; margin-top: 5px; display: block; }
+
+        /* Member Contact Styles */
+        .member-info { display: block; font-weight: 600; color: var(--secondary); }
+        .phone-link {
+            font-size: 0.8rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 2px;
+        }
+        .phone-link:hover { text-decoration: underline; }
 
         /* Footer */
         .footer {
@@ -663,4 +642,5 @@
         document.addEventListener('DOMContentLoaded', initTable);
     </script>
 </body>
+
 </html>
