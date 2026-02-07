@@ -1,0 +1,666 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="styles2.css">
+    <title>Korporat MTKT | Majlis Tertinggi Kolej Tuah</title>
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary: #cc0000;
+            --primary-dark: #a30000;
+            --primary-light: #ff3333;
+            --secondary: #1a1a1a;
+            --accent: #f8f9fa;
+            --text: #333333;
+            --text-light: #767268;
+            --white: #ffffff;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --border-radius: 8px;
+            --max-width: 1200px;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--accent);
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-logo img {
+            height: 40px;
+        }
+
+        .nav-logo-text {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Organization Section */
+        .organization {
+            background-color: var(--accent);
+            padding: 8rem 0 5rem 0;
+            min-height: 100vh;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+		/* Table Design */
+		.duty {
+            background-color: var(--accent);
+            padding: 8rem 0 5rem 0;
+            min-height: 100vh;
+        }
+		.section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .roster-header { text-align: center; margin-bottom: 3rem; }
+        .roster-card { background: var(--white); border-radius: var(--border-radius); box-shadow: var(--shadow); overflow: hidden; margin-bottom: 2rem; }
+        .table-responsive { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; min-width: 800px; }
+        th { background: var(--primary); color: var(--white); padding: 1.2rem; text-align: left; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
+        td { padding: 1rem; border-bottom: 1px solid #eee; font-size: 0.9rem; transition: var(--transition); }
+        tr:hover td { background-color: #fffafb; }
+		.upload-btn { background: var(--secondary); color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; font-size: 0.75rem; font-weight: 500; }
+        .upload-btn:hover { background: var(--primary); }
+        .sync-status { font-size: 0.7rem; color: #27ae60; font-weight: 600; margin-top: 5px; display: block; }
+
+        /* Footer */
+        .footer {
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo span {
+            color: var(--primary);
+        }
+
+        .footer-links h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .footer-links ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--primary);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Social Icons */
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--secondary);
+            color: var(--white);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .org-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                box-shadow: var(--shadow);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/LOGO.png" alt="MTKT Logo">
+                <span class="nav-logo-text">MTK<span>Tuah</span></span>
+            </a>
+            
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="ri-menu-line"></i>
+            </div>
+            
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html" class="nav-link">Utama</a></li>
+                <li><a href="7duty.html" class="nav-link active">Ahli Bertugas</a></li>
+                <li><a href="index.html#directory" class="nav-link">Direktori</a></li>
+                <li><a href="#contact" class="nav-link">HELLO</a></li>
+            </ul>
+        </div>
+    </nav>
+	
+	<section class="duty" id="duty">
+    <div class="container">
+        <div class="roster-header">
+            <h2 class="section-title">Jadual Bertugas MTKT 2025/26</h2>
+            <p class="section-subtitle">Sistem pengurusan ahli bertugas Majlis Tertinggi Kolej Tuah</p>
+        </div>
+
+        <div class="roster-card">
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Minggu</th>
+                            <th>Tarikh Bertugas</th>
+                            <th>Ahli Bertugas 1</th>
+                            <th>Ahli Bertugas 2</th>
+                            <!--<th>Poster/Sync</th>-->
+                        </tr>
+                    </thead>
+                    <tbody id="fullRoster">
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+	</section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <div class="footer-logo">MTK<span>Tuah</span></div>
+                    <p>Majlis Tertinggi Kolej Tuah (MTKT) - Membangunkan komuniti pelajar yang cemerlang dan bersatu padu.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <div class="footer-links">
+                        <h3>Pautan Pantas</h3>
+                        <ul>
+                            <li><a href="index.html">Utama</a></li>
+                            <li><a href="2korporat.html">Korporat</a></li>
+                            <li><a href="index.html#directory">Direktori</a></li>
+                            <li><a href="index.html#contact">HELLO</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <div class="footer-links">
+                        <h3>Hubungi Kami</h3>
+                        <ul>
+                            <li><i class="ri-phone-line"></i> +60 16-5480752</li>
+                            <li><i class="ri-mail-line"></i> kolejtuah@upnm.edu.my</li>
+                            <li><i class="ri-map-pin-line"></i> Kolej Tuah, UPNM</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <div class="footer-links">
+                        <h3>Ikuti Kami</h3>
+                        <div class="footer-social">
+                            <a href="https://www.instagram.com/kolej_tuah" class="social-icon" target="_blank">
+                                <i class="ri-instagram-fill"></i>
+                            </a>
+                            <a href="https://www.tiktok.com/@mtkt.upnm" class="social-icon" target="_blank">
+                                <i class="ri-tiktok-fill"></i>
+                            </a>
+                            <a href="https://wa.me/60165480752" class="social-icon" target="_blank">
+                                <i class="ri-whatsapp-fill"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>Copyright © 2025 Majlis Tertinggi Kolej Tuah. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation Toggle
+        const navToggle = document.getElementById('nav-toggle');
+        const navLinks = document.getElementById('nav-links');
+        
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            navToggle.querySelector('i').classList.toggle('ri-menu-line');
+            navToggle.querySelector('i').classList.toggle('ri-close-line');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                navToggle.querySelector('i').classList.add('ri-menu-line');
+                navToggle.querySelector('i').classList.remove('ri-close-line');
+            });
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Set active nav link
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentPage = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+        });
+		
+        // Member Contact Database
+        const contacts = {
+            "MUHAMMAD ARIF BIN ABDUL MALIK": "016-9820107",
+            "MUHAMMAD FAQRUL FAIZ BIN AHMAD PUAD": "012-3959904",
+            "MUHAMMAD NAJMI BIN SAHRULRIZAD": "013-6077169",
+            "MUHAMMAD AMIRUL HAFIS BIN MOHD AHAIR": "017-5637973",
+            "MUHAMMAD HARITH AKIF SYAHMI BIN SUFAIZAL": "019-847-8981",
+            "MUHAMMAD TAUFIQ BIN ROSDAN": "011-63380509",
+            "MUHAMMAD DANISH AIBAQ BIN FAUZI": "011-31991069",
+            "MOHAMAD IZMAN BIN ABD HALIM": "011-14144340",
+            "CHEN YONG JIE": "016-9491879",
+            "KESHWINAANANTHAN PILLAI A/L APPOOPILLAI": "017-2837362",
+            "MUHAMMAD DARWISY BIN MOHD ZAKY": "016-5480752",
+            "KAATHIR A/L SUGUMARAN": "011-16924758",
+            "MUHAMMAD HIDAYAT BIN SHAH RON": "014-8817408",
+            "MUHAMMAD AMIRULLAH BIN AZHAR": "016-6073015"
+        };
+
+        const dutyData = [
+            ["Week 1", "9 Mar – 15 Mar", "MUHAMMAD ARIF BIN ABDUL MALIK", "MUHAMMAD FAQRUL FAIZ BIN AHMAD PUAD", "2026-03-09"],
+            ["Week 2", "16 Mar – 22 Mar", "MUHAMMAD NAJMI BIN SAHRULRIZAD", "MUHAMMAD AMIRUL HAFIS BIN MOHD AHAIR", "2026-03-16"],
+            ["Week 3", "23 Mar – 29 Mar", "MUHAMMAD HARITH AKIF SYAHMI BIN SUFAIZAL", "MUHAMMAD TAUFIQ BIN ROSDAN", "2026-03-23"],
+            ["Week 4", "30 Mar – 5 Apr", "MUHAMMAD DANISH AIBAQ BIN FAUZI", "MOHAMAD IZMAN BIN ABD HALIM", "2026-03-30"],
+            ["Week 5", "6 Apr – 12 Apr", "CHEN YONG JIE", "KESHWINAANANTHAN PILLAI A/L APPOOPILLAI", "2026-04-06"],
+            ["Week 6", "13 Apr – 19 Apr", "MUHAMMAD DARWISY BIN MOHD ZAKY", "KAATHIR A/L SUGUMARAN", "2026-04-13"],
+            ["Week 7", "20 Apr – 26 Apr", "MUHAMMAD HIDAYAT BIN SHAH RON", "MUHAMMAD AMIRULLAH BIN AZHAR", "2026-04-20"],
+            ["Week 8", "27 Apr – 3 May", "MUHAMMAD TAUFIQ BIN ROSDAN", "CHEN YONG JIE", "2026-04-27"],
+            ["Week 9", "4 May – 10 May", "MUHAMMAD NAJMI BIN SAHRULRIZAD", "MUHAMMAD FAQRUL FAIZ BIN AHMAD PUAD", "2026-05-04"],
+            ["Week 10", "11 May – 17 May", "MUHAMMAD DARWISY BIN MOHD ZAKY", "MUHAMMAD HARITH AKIF SYAHMI BIN SUFAIZAL", "2026-05-11"],
+            ["Week 11", "18 May – 24 May", "MUHAMMAD HIDAYAT BIN SHAH RON", "MUHAMMAD DANISH AIBAQ BIN FAUZI", "2026-05-18"],
+            ["Week 12", "25 May – 31 May", "KAATHIR A/L SUGUMARAN", "MOHAMAD IZMAN BIN ABD HALIM", "2026-05-25"],
+            ["Week 13", "1 Jun – 7 Jun", "MUHAMMAD AMIRUL HAFIS BIN MOHD AHAIR", "MUHAMMAD ARIF BIN ABDUL MALIK", "2026-06-01"],
+            ["Week 14", "8 Jun – 14 Jun", "MUHAMMAD AMIRULLAH BIN AZHAR", "KESHWINAANANTHAN PILLAI A/L APPOOPILLAI", "2026-06-08"],
+            ["Week 15", "15 Jun – 21 Jun", "MUHAMMAD AMIRULLAH BIN AZHAR", "MUHAMMAD NAJMI BIN SAHRULRIZAD", "2026-06-15"],
+            ["Week 16", "22 Jun – 28 Jun", "KESHWINAANANTHAN PILLAI A/L APPOOPILLAI", "MUHAMMAD HIDAYAT BIN SHAH RON", "2026-06-22"],
+            ["Week 17", "29 Jun – 5 Jul", "MUHAMMAD TAUFIQ BIN ROSDAN", "MUHAMMAD ARIF BIN ABDUL MALIK", "2026-06-29"],
+            ["Week 18", "6 Jul – 12 Jul", "MUHAMMAD DANISH AIBAQ BIN FAUZI", "KAATHIR A/L SUGUMARAN", "2026-07-06"],
+            ["Week 19", "13 Jul – 19 Jul", "MUHAMMAD DARWISY BIN MOHD ZAKY", "MUHAMMAD AMIRUL HAFIS BIN MOHD AHAIR", "2026-07-13"],
+            ["Week 20", "20 Jul – 26 Jul", "MOHAMAD IZMAN BIN ABD HALIM", "MUHAMMAD FAQRUL FAIZ BIN AHMAD PUAD", "2026-07-20"],
+            ["Week 21", "27 Jul – 2 Aug", "CHEN YONG JIE", "MUHAMMAD HARITH AKIF SYAHMI BIN SUFAIZAL", "2026-07-27"],
+            ["Week 22", "3 Aug – 9 Aug", "MUHAMMAD FAQRUL FAIZ BIN AHMAD PUAD", "MUHAMMAD TAUFIQ BIN ROSDAN", "2026-08-03"],
+            ["Week 23", "10 Aug – 16 Aug", "MUHAMMAD HARITH AKIF SYAHMI BIN SUFAIZAL", "MUHAMMAD AMIRULLAH BIN AZHAR", "2026-08-10"],
+            ["Week 24", "17 Aug – 23 Aug", "CHEN YONG JIE", "MUHAMMAD DANISH AIBAQ BIN FAUZI", "2026-08-17"],
+            ["Week 25", "24 Aug – 30 Aug", "MUHAMMAD NAJMI BIN SAHRULRIZAD", "MUHAMMAD ARIF BIN ABDUL MALIK", "2026-08-24"],
+            ["Week 26", "31 Aug – 6 Sep", "MOHAMAD IZMAN BIN ABD HALIM", "MUHAMMAD DARWISY BIN MOHD ZAKY", "2026-08-31"],
+            ["Week 27", "7 Sep – 13 Sep", "KESHWINAANANTHAN PILLAI A/L APPOOPILLAI", "MUHAMMAD HIDAYAT BIN SHAH RON", "2026-09-07"],
+            ["Week 28", "14 Sep – 20 Sep", "KAATHIR A/L SUGUMARAN", "MUHAMMAD AMIRUL HAFIS BIN MOHD AHAIR", "2026-09-14"]
+        ];
+
+        function getMemberHTML(name) {
+            const phone = contacts[name] || "N/A";
+            return `
+                <span class="member-info">${name}</span>
+                <a href="https://wa.me/${phone.replace(/-/g, '')}" class="phone-link" target="_blank">
+                    <i class="ri-whatsapp-line"></i> ${phone}
+                </a>
+            `;
+        }
+
+        function initTable() {
+            const tableBody = document.getElementById('fullRoster');
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            dutyData.forEach((row, i) => {
+                const startDate = new Date(row[4]);
+                const revealDate = new Date(startDate);
+                revealDate.setDate(revealDate.getDate() - 1);
+
+                if (i < 10 || today >= revealDate) {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td style="font-weight:700">${row[0]}</td>
+                        <td>${row[1]}</td>
+                        <td>${getMemberHTML(row[2])}</td>
+                        <td>${getMemberHTML(row[3])}</td>
+<!--                         <td>
+                            <input type="file" id="up-${i}" style="display:none" onchange="startSync(${i})">
+                            <button class="upload-btn" onclick="document.getElementById('up-${i}').click()">
+                                <i class="ri-upload-2-line"></i> Upload & Sync
+                            </button>
+                            <div id="stat-${i}"></div>
+                        </td> -->
+                    `;
+                    tableBody.appendChild(tr);
+                }
+            });
+        }
+
+        function startSync(id) {
+            const status = document.getElementById(`stat-${id}`);
+            status.innerHTML = '<span class="sync-status" style="color:#f39c12">⏳ Syncing...</span>';
+            setTimeout(() => {
+                status.innerHTML = '<span class="sync-status">✅ Synced to Website B</span>';
+            }, 2000);
+        }
+
+        document.addEventListener('DOMContentLoaded', initTable);
+    </script>
+</body>
+</html>
